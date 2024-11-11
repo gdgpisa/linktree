@@ -2,9 +2,7 @@
 
 Welcome to the GDG Pisa Links project! This project is a simple web application that provides links
 to various GDG Pisa resources and social media platforms. It is built using TypeScript, Vite and
-Preact.
-
-## Features
+Preact. Here are some of the features of the application:
 
 -   Responsive design with support for dark mode
 
@@ -22,7 +20,9 @@ $ cd gdg-pisa-links
 $ bun install
 ```
 
-## Usage
+## Development
+
+### Usage
 
 To run the project locally, use the following command:
 
@@ -33,19 +33,17 @@ $ bun dev
 This will start a development server and you can view the application in your browser at
 `http://localhost:5173`.
 
-## Development
-
 ### Project Structure
 
 The project has the following structure:
 
 ```
-index.html
-package.json
 public/
 src/
     main.tsx
     styles.css
+index.html
+package.json
 tsconfig.json
 vite.config.ts
 ```
@@ -70,3 +68,7 @@ bun run build
 ```
 
 This will create a `dist/` directory with the production build of the application.
+
+## Notes
+
+-   https://stackoverflow.com/questions/27844608/a-way-to-pass-url-parameters-into-survey
