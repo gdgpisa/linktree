@@ -15,8 +15,8 @@ Preact. Here are some of the features of the application:
 To get started with the project, clone the repository and install the dependencies:
 
 ```sh
-$ git clone https://github.com/.../gdg-pisa-links.git
-$ cd gdg-pisa-links
+$ git clone https://github.com/aziis98/gdg-pisa-linktree
+$ cd gdg-pisa-linktree
 $ bun install
 ```
 
