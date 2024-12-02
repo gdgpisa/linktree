@@ -46,7 +46,11 @@ img {
     white-space: nowrap;
     direction: ltr;
 
-    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 24;
 }
 
 h1 {
