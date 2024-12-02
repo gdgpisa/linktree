@@ -26,6 +26,8 @@ async function getLatestEvent(): Promise<GDGComunityEvent> {
 
 // main()
 
+const FEEDBACK_FORM_URL_PREFIX = `https://docs.google.com/forms/d/e/1FAIpQLSdPCraC4NxEaxKEcqUIE7llG3xbBZtHiQnlKPh3hVzHe1be7Q/viewform`
+
 const LatestEventLink = () => {
     const $latestEvent = useSignal<GDGComunityEvent | null>(null)
 
@@ -38,11 +40,23 @@ const LatestEventLink = () => {
     return (
         <>
             {$latestEvent.value && (
-                <a class="card" href={$latestEvent.value.url} target="_blank">
-                    <div class="picture">
-                        <img src={$latestEvent.value.cropped_picture_url} alt="GDG Community Event" />
-                    </div>
-                </a>
+                <>
+                    <a class="card" href={$latestEvent.value.url} target="_blank">
+                        <div class="picture">
+                            <img src={$latestEvent.value.cropped_picture_url} alt="GDG Community Event" />
+                        </div>
+                    </a>
+                    <a
+                        href={
+                            FEEDBACK_FORM_URL_PREFIX +
+                            `?usp=pp_url&entry.1235423955=${encodeURIComponent($latestEvent.value.title)}`
+                        }
+                        class="large"
+                    >
+                        <span class="icon">rss_feed</span>
+                        <div class="fill center">Feedback from last event</div>
+                    </a>
+                </>
             )}
         </>
     )
