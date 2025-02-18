@@ -1,5 +1,7 @@
 # GDG Pisa / Links
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/85cb3619-ead6-49e1-ba01-1faa0720b787/deploy-status)](https://app.netlify.com/sites/lambent-bunny-988790/deploys)
+
 Welcome to the GDG Pisa Links project! This project is a simple web application
 that provides links to various GDG Pisa resources and social media platforms. It
 is built using TypeScript, Vite and Preact. Here are some of the features of the
