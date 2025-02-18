@@ -2,7 +2,7 @@
 # mandatory except for the "title" field in the "sections" array.
 
 # The icons can be found at https://icon-sets.iconify.design, search
-# for Material Design Icons or Material Symbols
+# for Material Design Icons (mdi) or Material Symbols (material-symbols)
 
 social:
   - title: 'Email'
