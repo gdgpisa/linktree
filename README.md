@@ -1,47 +1,79 @@
-# Astro Starter Kit: Minimal
+# GDG Pisa / Links
+
+Welcome to the GDG Pisa Links project! This project is a simple web application
+that provides links to various GDG Pisa resources and social media platforms. It
+is built using TypeScript, Vite and Preact. Here are some of the features of the
+application:
+
+-   Responsive design with support for dark mode
+
+-   Links to GDG Pisa's social media platforms
+
+-   Dynamic fetching and display of the latest GDG Pisa event
+
+## Installation
+
+To get started with the project, clone the repository and install the
+dependencies:
 
 ```sh
-npm create astro@latest -- --template minimal
+$ git clone https://github.com/aziis98/gdg-pisa-linktree
+$ cd gdg-pisa-linktree
+$ bun install
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## Development
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Usage
 
-## 🚀 Project Structure
+To run the project locally, use the following command:
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+$ bun dev
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+This will start a development server and you can view the application in your
+browser at `http://localhost:5173`.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Project Structure
 
-Any static assets, like images, can be placed in the `public/` directory.
+The project has the following structure:
 
-## 🧞 Commands
+```
+public/
+src/
+    main.tsx
+    styles.css
+index.html
+package.json
+tsconfig.json
+vite.config.ts
+```
 
-All commands are run from the root of the project, from a terminal:
+The main files are:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+-   **index.html**: The main HTML file that includes the structure of the web
+    page.
 
-## 👀 Want to learn more?
+-   **src/main.tsx**: The main TypeScript file that initializes the Preact
+    application and fetches the latest event.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+-   **src/styles.css**: The CSS file that contains the styles for the
+    application.
+
+-   **vite.config.ts**: The Vite configuration file for Preact.
+
+### Building the Project
+
+To build the project for production, use the following command:
+
+```sh
+bun run build
+```
+
+This will create a `dist/` directory with the production build of the
+application.
+
+## Notes
+
+-   https://stackoverflow.com/questions/27844608/a-way-to-pass-url-parameters-into-survey

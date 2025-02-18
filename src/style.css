@@ -1,0 +1,249 @@
+*,
+*::before,
+*::after {
+    font-family: inherit;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+img {
+    display: inline-block;
+}
+
+/* Fonts & Typography */
+
+@font-face {
+    font-family: 'Google Sans';
+    src: url('https://fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrwEIJllpyw.ttf')
+        format('truetype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Google Sans';
+    src: url('https://fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrzjJ5llpyw.ttf')
+        format('truetype');
+    font-style: normal;
+    font-weight: 700;
+}
+
+.icon {
+    font-family: 'Material Symbols Outlined Variable';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px; /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+
+    @media screen and (width <= 768px) {
+        text-align: center;
+    }
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Components */
+
+a {
+    display: flex;
+    align-items: center;
+
+    border-radius: 2rem;
+
+    color: #333;
+    text-decoration: none;
+
+    background-color: #fff;
+    border: 2px solid #ddd;
+
+    @media screen and (prefers-color-scheme: dark) {
+        background: #333;
+        color: #d8d8d8;
+        border-color: #555;
+    }
+
+    --padding-size: 1rem;
+    --padding-size-half: calc(var(--padding-size) * 0.7);
+
+    &.large {
+        --padding-size: 1.5rem;
+        font-size: 17px;
+    }
+
+    gap: var(--padding-size-half);
+    padding: var(--padding-size-half) var(--padding-size);
+
+    &:has(> img:first-child),
+    &:has(> svg:first-child),
+    &:has(> .icon:first-child) {
+        padding-left: var(--padding-size-half);
+    }
+
+    &:has(> img:first-child:last-child),
+    &:has(> svg:first-child:last-child) {
+        padding: var(--padding-size-half);
+        border-radius: 50%;
+    }
+
+    img,
+    svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    &.card {
+        place-self: center;
+
+        display: grid;
+        grid-auto-flow: row;
+        place-items: center;
+        gap: 1rem;
+
+        padding: 1rem;
+        border-radius: 1rem;
+
+        max-width: 45ch;
+
+        .picture {
+            width: 100%;
+            height: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 1rem;
+            }
+        }
+    }
+
+    .fill {
+        flex-grow: 1;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    &:hover {
+        background-color: #f8f8f8;
+
+        @media screen and (prefers-color-scheme: dark) {
+            background-color: #444;
+        }
+    }
+}
+
+.subtitle {
+    display: grid;
+    grid-auto-flow: row;
+    place-items: center;
+    align-content: start;
+    gap: 1rem;
+}
+
+.social {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.links {
+    display: grid;
+    grid-auto-flow: row;
+
+    gap: 1rem;
+
+    width: 100%;
+    max-width: 60ch;
+}
+
+.dynamic-icon-color {
+    path {
+        fill: #444;
+
+        @media screen and (prefers-color-scheme: dark) {
+            fill: #ccc;
+        }
+    }
+}
+
+/* Layout */
+
+body {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+
+    background-color: #fafbff;
+    color: #444;
+
+    @media screen and (prefers-color-scheme: dark) {
+        background-color: #222;
+        color: #ccc;
+    }
+
+    display: grid;
+    grid-auto-flow: row;
+    place-items: center;
+    align-content: start;
+    min-height: 100vh;
+
+    padding: 4rem 1rem;
+    gap: 2rem;
+}
+
+img[alt='gdg pisa logo'] {
+    width: 6rem;
+    height: 6rem;
+    margin-right: 1rem;
+
+    vertical-align: middle;
+}
+
+/* Misc */
+
+.dynamic-bit {
+    display: contents;
+}
+
+@media screen and (width <= 768px) {
+    .desktop-only {
+        display: none;
+    }
+}
+
+@media screen and (width > 768px) {
+    .mobile-only {
+        display: none;
+    }
+}
