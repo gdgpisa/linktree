@@ -19,6 +19,8 @@
     "@iconify-json/material-symbols": "^1.2.14",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify/react": "^5.2.0",
-    "@rollup/plugin-yaml": "^4.1.2"
+    "@rollup/plugin-yaml": "^4.1.2",
+    "prettier": "^3.5.1",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

@@ -4,49 +4,49 @@
 # for Material Design Icons or Material Symbols
 
 social:
-    - title: 'Email'
-      icon: 'material-symbols:alternate-email-rounded'
-      url: 'mailto:pisagdg@gmail.com'
-    - title: 'Telegram'
-      icon: 'mdi:telegram'
-      url: 'https://gdgpisa.it/telegram'
-    - title: 'Instagram'
-      icon: 'mdi:instagram'
-      url: 'https://instagram.com/gdgpisa'
-    - title: 'LinkedIn'
-      icon: 'mdi:linkedin'
-      url: 'https://linkedin.com/company/gdg-pisa'
-    - title: 'Facebook'
-      icon: 'mdi:facebook'
-      url: 'https://facebook.com/gdg.pisa'
-    - title: 'YouTube'
-      icon: 'mdi:youtube'
-      url: 'https://www.youtube.com/@gdgpisa4445'
+  - title: 'Email'
+    icon: 'material-symbols:alternate-email-rounded'
+    url: 'mailto:pisagdg@gmail.com'
+  - title: 'Telegram'
+    icon: 'mdi:telegram'
+    url: 'https://gdgpisa.it/telegram'
+  - title: 'Instagram'
+    icon: 'mdi:instagram'
+    url: 'https://instagram.com/gdgpisa'
+  - title: 'LinkedIn'
+    icon: 'mdi:linkedin'
+    url: 'https://linkedin.com/company/gdg-pisa'
+  - title: 'Facebook'
+    icon: 'mdi:facebook'
+    url: 'https://facebook.com/gdg.pisa'
+  - title: 'YouTube'
+    icon: 'mdi:youtube'
+    url: 'https://www.youtube.com/@gdgpisa4445'
 
 sections:
-    - links:
-          - title: GDG Pisa, Modulo prenotazione aule
-            icon: material-symbols:checkbook
-            url: https://forms.gle/R1DaTQEBje3Qnr5T9
-          - title: Proponi il tuo talk, noi pensiamo al resto
-            icon: material-symbols:contract-edit
-            url: https://docs.google.com/forms/d/e/1FAIpQLSfRDOs90s1iQHPBoceC1r55ohs1Ivsr9f5LaunGZnQzjXUNsQ/viewform
-    - title: Stay Tuned
-      links:
-          - title: Website of GDG Pisa
-            icon: material-symbols:globe
-            url: https://gdgpisa.it
-          - title: Upcoming events on GDG Community
-            icon: material-symbols:calendar-today
-            url: https://gdg.community.dev/gdg-pisa
-    - title: DevFest Pisa 2025
-      links:
-          - title: DevFest Website
-            icon: material-symbols:festival-rounded
-            url: https://devfest.gdgpisa.it/
-          - title: Call for Speakers
-            icon: material-symbols:volume-up-rounded
-            url: https://sessionize.com/dfp25/?e=a1a46b
-          - title: Partnership Proposal
-            icon: material-symbols:handshake-rounded
-            url: https://docs.google.com/document/d/1JM9FV4-M9Qf6stJguMMlRU70RhOqIdQapd9G7FKP38A/edit?usp=sharing
+  - links:
+      - title: GDG Pisa, Modulo prenotazione aule
+        icon: material-symbols:checkbook
+        url: https://forms.gle/R1DaTQEBje3Qnr5T9
+      - title: Proponi il tuo talk, noi pensiamo al resto
+        icon: material-symbols:contract-edit
+        url: https://docs.google.com/forms/d/e/1FAIpQLSfRDOs90s1iQHPBoceC1r55ohs1Ivsr9f5LaunGZnQzjXUNsQ/viewform
+  - title: Stay Tuned
+    links:
+      - title: Website of GDG Pisa
+        icon: material-symbols:globe
+        url: https://gdgpisa.it
+      - title: Upcoming events on GDG Community
+        icon: material-symbols:calendar-today
+        url: https://gdg.community.dev/gdg-pisa
+  - title: DevFest Pisa 2025
+    links:
+      - title: DevFest Website
+        icon: material-symbols:festival-rounded
+        url: https://devfest.gdgpisa.it/
+      - title: Call for Speakers
+        icon: material-symbols:volume-up-rounded
+        url: https://sessionize.com/dfp25/?e=a1a46b
+      - title: Partnership Proposal
+        icon: material-symbols:handshake-rounded
+        url: https://docs.google.com/document/d/1JM9FV4-M9Qf6stJguMMlRU70RhOqIdQapd9G7FKP38A/edit?usp=sharing

@@ -1,10 +1,10 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from 'astro-icon/components'
 
-import data from '@/data.yaml';
+import data from '@/data.yaml'
 
-import { LatestEventLink } from "@/components/LatestEventLink";
-import '@/style.css';
+import { LatestEventLink } from '@/components/LatestEventLink'
+import '@/style.css'
 ---
 
 <!doctype html>
@@ -16,7 +16,7 @@ import '@/style.css';
         <title>GDG Pisa &bull; Links</title>
 
         <!-- Open Graph Meta Tags -->
-        <meta property="og:title" content="GDG Pisa &bull; Links" />
+        <meta property="og:title" content="GDG Pisa • Links" />
         <meta property="og:description" content="GDG Pisa: Tech Community" />
         <meta property="og:url" content="https://links.gdgpisa.it" />
         <meta property="og:image" content="/gdg-pisa-logo.png" />
@@ -31,75 +31,32 @@ import '@/style.css';
             </h1>
             <h2>GDG Pisa: Tech Community</h2>
             <div class="social">
-				{
-					data.social.map(({ title, icon, url }) => (
-						<a href={url} target="_blank" rel="noopener noreferrer" title={title}>
-							<Icon name={icon} />
-						</a>
-					))
-				}
+                {
+                    data.social.map(({ title, icon, url }) => (
+                        <a href={url} target="_blank" rel="noopener noreferrer" title={title}>
+                            <Icon name={icon} />
+                        </a>
+                    ))
+                }
             </div>
         </div>
 
-        <LatestEventLink client:load /> 
+        <LatestEventLink client:load />
 
         {
             data.sections.map(section => (
                 <>
                     <h3>{section.title}</h3>
                     <div class="links">
-                        {
-                            section.links.map(({ title, icon, url }) => (
-                                 <a href={url} class="large">
-                                    <Icon name={icon} />
-                                    <div class="fill center">{title}</div>
-                                </a>
-                            ))
-                        }
+                        {section.links.map(({ title, icon, url }) => (
+                            <a href={url} class="large">
+                                <Icon name={icon} />
+                                <div class="fill center">{title}</div>
+                            </a>
+                        ))}
                     </div>
                 </>
             ))
         }
-
-
-
-
-<!-- 
-        <h3>Latest Event</h3>
-
-        <div class="links">
-			<LatestEventLink client:load /> 
-
-            <a href="https://forms.gle/R1DaTQEBje3Qnr5T9" class="large">
-				<Icon name="material-symbols:checkbook" />
-                <div class="fill center">GDG Pisa, Modulo prenotazione aule</div>
-            </a>
-
-            <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSfRDOs90s1iQHPBoceC1r55ohs1Ivsr9f5LaunGZnQzjXUNsQ/viewform"
-                class="large"
-            >
-				<Icon name="material-symbols:contract-edit" />
-                <div class="fill center">Proponi il tuo talk, noi pensiamo al resto</div>
-            </a>
-        </div>
-
-        <h3>Stay Tuned</h3>
-
-        <div class="links">
-            <a
-                class="large"
-                href="https://gdg.community.dev/gdg-pisa"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-				<Icon name="material-symbols:calendar-today" />
-                <div class="fill center">Upcoming events on GDG Community</div>
-            </a>
-            <a class="large" href="https://gdgpisa.it" target="_blank" rel="noopener noreferrer">
-				<Icon name="material-symbols:globe" />
-                <div class="fill center">Website of GDG Pisa</div>
-            </a>
-        </div> -->
     </body>
 </html>

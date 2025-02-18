@@ -5,11 +5,11 @@ that provides links to various GDG Pisa resources and social media platforms. It
 is built using TypeScript, Vite and Preact. Here are some of the features of the
 application:
 
--   Responsive design with support for dark mode
+- Responsive design with support for dark mode
 
--   Links to GDG Pisa's social media platforms
+- Links to GDG Pisa's social media platforms
 
--   Dynamic fetching and display of the latest GDG Pisa event
+- Dynamic fetching and display of the latest GDG Pisa event
 
 ## Installation
 
@@ -52,16 +52,16 @@ vite.config.ts
 
 The main files are:
 
--   **index.html**: The main HTML file that includes the structure of the web
-    page.
+- **index.html**: The main HTML file that includes the structure of the web
+  page.
 
--   **src/main.tsx**: The main TypeScript file that initializes the Preact
-    application and fetches the latest event.
+- **src/main.tsx**: The main TypeScript file that initializes the Preact
+  application and fetches the latest event.
 
--   **src/styles.css**: The CSS file that contains the styles for the
-    application.
+- **src/styles.css**: The CSS file that contains the styles for the
+  application.
 
--   **vite.config.ts**: The Vite configuration file for Preact.
+- **vite.config.ts**: The Vite configuration file for Preact.
 
 ### Building the Project
 
@@ -76,4 +76,4 @@ application.
 
 ## Notes
 
--   https://stackoverflow.com/questions/27844608/a-way-to-pass-url-parameters-into-survey
+- https://stackoverflow.com/questions/27844608/a-way-to-pass-url-parameters-into-survey
