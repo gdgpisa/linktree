@@ -1,4 +1,5 @@
-# The types for this file is stored in "src/env.d.ts"
+# The types for this file is stored in "src/env.d.ts", every field is
+# mandatory except for the "title" field in the "sections" array.
 
 # The icons can be found at https://icon-sets.iconify.design, search
 # for Material Design Icons or Material Symbols
