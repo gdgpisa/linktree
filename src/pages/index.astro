@@ -1,10 +1,22 @@
 ---
 import { Icon } from 'astro-icon/components'
-
 import data from '@/data.yaml'
-
 import { LatestEventLink } from '@/components/LatestEventLink'
 import '@/style.css'
+
+// Funzione per verificare se un timestamp è nell'intervallo o se non ci sono date specificate
+const isDateTimeInRange = (startDateTime?: string, endDateTime?: string): boolean => {
+    // Se non ci sono date specificate, il link è sempre visibile
+    if (!startDateTime || !endDateTime) {
+        return true
+    }
+
+    const now = new Date()
+    const start = new Date(startDateTime)
+    const end = new Date(endDateTime)
+
+    return now >= start && now <= end
+}
 ---
 
 <!doctype html>
@@ -32,11 +44,13 @@ import '@/style.css'
             <h2>GDG Pisa: Tech Community</h2>
             <div class="social">
                 {
-                    data.social.map(({ title, icon, url }) => (
-                        <a href={url} target="_blank" rel="noopener noreferrer" title={title}>
-                            <Icon name={icon} />
-                        </a>
-                    ))
+                    data.social
+                        .filter(item => item.visible)
+                        .map(({ title, icon, url }) => (
+                            <a href={url} target="_blank" rel="noopener noreferrer" title={title}>
+                                <Icon name={icon} />
+                            </a>
+                        ))
                 }
             </div>
         </div>
@@ -44,19 +58,45 @@ import '@/style.css'
         <LatestEventLink client:load />
 
         {
-            data.sections.map(section => (
-                <>
-                    <h3>{section.title}</h3>
-                    <div class="links">
-                        {section.links.map(({ title, icon, url }) => (
-                            <a href={url} class="large">
-                                <Icon name={icon} />
-                                <div class="fill center">{title}</div>
-                            </a>
-                        ))}
-                    </div>
-                </>
-            ))
+            data.sections.map(section => {
+                const visibleLinks = section.links.filter(link => {
+                    const isVisible = link.visible && isDateTimeInRange(link.dataInizio, link.dataFine)
+
+                    if (isVisible) {
+                        console.log('Link visualizzato:', {
+                            title: link.title,
+                            dateTimeRange:
+                                link.dataInizio && link.dataFine
+                                    ? `${new Date(link.dataInizio).toLocaleString()} - ${new Date(link.dataFine).toLocaleString()}`
+                                    : 'Nessun intervallo di date specificato',
+                            url: link.url,
+                        })
+                    }
+
+                    return isVisible
+                })
+
+                return (
+                    visibleLinks.length > 0 && (
+                        <>
+                            {section.title && <h3>{section.title}</h3>}
+                            <div class="links">
+                                {visibleLinks.map(({ title, icon, url }) => (
+                                    <a href={url} target="_blank" class="large">
+                                        <Icon name={icon} />
+                                        <div class="fill center">{title}</div>
+                                    </a>
+                                ))}
+                            </div>
+                        </>
+                    )
+                )
+            })
         }
+
+        <script>
+            // Script per assicurarsi che il console.log sia visibile anche lato client
+            console.log('GDG Pisa Links - Active links loaded')
+        </script>
     </body>
 </html>

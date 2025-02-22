@@ -4,6 +4,7 @@ declare module '@/data.yaml' {
             title: string
             icon: string
             url: string
+            visible: boolean
         }[]
         sections: {
             title?: string
@@ -11,6 +12,9 @@ declare module '@/data.yaml' {
                 title: string
                 icon: string
                 url: string
+                visible: boolean
+                dataInizio?: string  // Ora è opzionale e di tipo string
+                dataFine?: string    // Ora è opzionale e di tipo string
             }[]
         }[]
     }
