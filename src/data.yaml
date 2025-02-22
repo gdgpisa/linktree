@@ -30,7 +30,7 @@ social:
     url: 'https://www.youtube.com/@gdgpisa4445'
     visible: true
 
-
+#dataInizio e dataFine vanno messe con ora inglese
 sections:
   - title: DevFest Pisa 2025
     links:
@@ -53,9 +53,9 @@ sections:
       - title: Code of Conductaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         icon: material-symbols:gavel
         url: https://devfest.gdgpisa.it/code-of-conduct/
-        visible: true
-        dataInizio: 2025-02-22T18:23:00
-        dataFine: 2025-02-22T18:25:50
+        visible: false
+        dataInizio: 2025-02-22T19:22:00
+        dataFine: 2025-02-22T19:33:10
 
 
   - title: Submit your talk

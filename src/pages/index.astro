@@ -1,22 +1,9 @@
 ---
-import { Icon } from 'astro-icon/components'
-import data from '@/data.yaml'
-import { LatestEventLink } from '@/components/LatestEventLink'
-import '@/style.css'
-
-// Funzione per verificare se un timestamp è nell'intervallo o se non ci sono date specificate
-const isDateTimeInRange = (startDateTime?: string, endDateTime?: string): boolean => {
-    // Se non ci sono date specificate, il link è sempre visibile
-    if (!startDateTime || !endDateTime) {
-        return true
-    }
-
-    const now = new Date()
-    const start = new Date(startDateTime)
-    const end = new Date(endDateTime)
-
-    return now >= start && now <= end
-}
+import { Icon } from 'astro-icon/components';
+import data from '@/data.yaml';
+import { LatestEventLink } from '@/components/LatestEventLink';
+import '@/style.css';
+import DateUtils, { isDateTimeInRange, formatItalianDateTime } from '@/components/DateUtils';
 ---
 
 <!doctype html>
@@ -24,15 +11,11 @@ const isDateTimeInRange = (startDateTime?: string, endDateTime?: string): boolea
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <title>GDG Pisa &bull; Links</title>
-
-        <!-- Open Graph Meta Tags -->
         <meta property="og:title" content="GDG Pisa • Links" />
         <meta property="og:description" content="GDG Pisa: Tech Community" />
         <meta property="og:url" content="https://links.gdgpisa.it" />
         <meta property="og:image" content="/gdg-pisa-logo.png" />
-
         <link rel="icon" href="/gdg-pisa-logo.png" />
     </head>
     <body>
@@ -43,38 +26,33 @@ const isDateTimeInRange = (startDateTime?: string, endDateTime?: string): boolea
             </h1>
             <h2>GDG Pisa: Tech Community</h2>
             <div class="social">
-                {
-                    data.social
-                        .filter(item => item.visible)
-                        .map(({ title, icon, url }) => (
-                            <a href={url} target="_blank" rel="noopener noreferrer" title={title}>
-                                <Icon name={icon} />
-                            </a>
-                        ))
-                }
+                {data.social.filter(item => item.visible).map(({ title, icon, url }) => (
+                    <a href={url} target="_blank" rel="noopener noreferrer" title={title}>
+                        <Icon name={icon} />
+                    </a>
+                ))}
             </div>
         </div>
 
+        <DateUtils client:load />
         <LatestEventLink client:load />
 
         {
             data.sections.map(section => {
                 const visibleLinks = section.links.filter(link => {
-                    const isVisible = link.visible && isDateTimeInRange(link.dataInizio, link.dataFine)
+                    const isVisible = link.visible && isDateTimeInRange(link.dataInizio, link.dataFine);
+                    
+                    // console.log('Link:', {
+                    //     title: link.title,
+                    //     visible: isVisible,
+                    //     dateTimeRange: link.dataInizio && link.dataFine
+                    //         ? `${formatItalianDateTime(link.dataInizio)} - ${formatItalianDateTime(link.dataFine)}`
+                    //         : 'Sempre visibile',
+                    //     url: link.url,
+                    // });
 
-                    if (isVisible) {
-                        console.log('Link visualizzato:', {
-                            title: link.title,
-                            dateTimeRange:
-                                link.dataInizio && link.dataFine
-                                    ? `${new Date(link.dataInizio).toLocaleString()} - ${new Date(link.dataFine).toLocaleString()}`
-                                    : 'Nessun intervallo di date specificato',
-                            url: link.url,
-                        })
-                    }
-
-                    return isVisible
-                })
+                    return isVisible;
+                });
 
                 return (
                     visibleLinks.length > 0 && (
@@ -90,13 +68,8 @@ const isDateTimeInRange = (startDateTime?: string, endDateTime?: string): boolea
                             </div>
                         </>
                     )
-                )
+                );
             })
         }
-
-        <script>
-            // Script per assicurarsi che il console.log sia visibile anche lato client
-            console.log('GDG Pisa Links - Active links loaded')
-        </script>
     </body>
 </html>
