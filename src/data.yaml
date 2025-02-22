@@ -8,46 +8,73 @@ social:
   - title: 'Email'
     icon: 'material-symbols:alternate-email-rounded'
     url: 'mailto:pisagdg@gmail.com'
+    visible: true
   - title: 'Telegram'
     icon: 'mdi:telegram'
     url: 'https://gdgpisa.it/telegram'
+    visible: true
   - title: 'Instagram'
     icon: 'mdi:instagram'
     url: 'https://instagram.com/gdgpisa'
+    visible: true
   - title: 'LinkedIn'
     icon: 'mdi:linkedin'
     url: 'https://linkedin.com/company/gdg-pisa'
+    visible: true
   - title: 'Facebook'
     icon: 'mdi:facebook'
     url: 'https://facebook.com/gdg.pisa'
+    visible: true
   - title: 'YouTube'
     icon: 'mdi:youtube'
     url: 'https://www.youtube.com/@gdgpisa4445'
+    visible: true
 
+#dataInizio e dataFine vanno messe con ora inglese
 sections:
-  - links:
-      - title: GDG Pisa, Modulo prenotazione aule
-        icon: material-symbols:checkbook
-        url: https://forms.gle/R1DaTQEBje3Qnr5T9
-      - title: Proponi il tuo talk, noi pensiamo al resto
-        icon: material-symbols:contract-edit
-        url: https://docs.google.com/forms/d/e/1FAIpQLSfRDOs90s1iQHPBoceC1r55ohs1Ivsr9f5LaunGZnQzjXUNsQ/viewform
-  - title: Stay Tuned
-    links:
-      - title: Website of GDG Pisa
-        icon: material-symbols:globe
-        url: https://gdgpisa.it
-      - title: Upcoming events on GDG Community
-        icon: material-symbols:calendar-today
-        url: https://gdg.community.dev/gdg-pisa
   - title: DevFest Pisa 2025
     links:
       - title: DevFest Website
         icon: material-symbols:festival-rounded
         url: https://devfest.gdgpisa.it/
+        visible: true
+      - title: IWD Website
+        icon: material-symbols:festival-rounded
+        url: https://devfest.gdgpisa.it/iwd/
+        visible: true
       - title: Call for Speakers
         icon: material-symbols:volume-up-rounded
         url: https://sessionize.com/dfp25/?e=a1a46b
+        visible: false
       - title: Partnership Proposal
         icon: material-symbols:handshake-rounded
         url: https://docs.google.com/document/d/1JM9FV4-M9Qf6stJguMMlRU70RhOqIdQapd9G7FKP38A/edit?usp=sharing
+        visible: true
+      - title: Code of Conductaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        icon: material-symbols:gavel
+        url: https://devfest.gdgpisa.it/code-of-conduct/
+        visible: false
+        dataInizio: 2025-02-22T19:22:00
+        dataFine: 2025-02-22T19:33:10
+
+
+  - title: Submit your talk
+    links:
+      - title: GDG Pisa, Modulo prenotazione aule
+        icon: material-symbols:checkbook
+        url: https://forms.gle/R1DaTQEBje3Qnr5T9
+        visible: true
+      - title: Proponi il tuo talk, noi pensiamo al resto
+        icon: material-symbols:contract-edit
+        url: https://docs.google.com/forms/d/e/1FAIpQLSfRDOs90s1iQHPBoceC1r55ohs1Ivsr9f5LaunGZnQzjXUNsQ/viewform
+        visible: true
+  - title: Stay Tuned
+    links:
+      - title: Website of GDG Pisa
+        icon: material-symbols:globe
+        url: https://gdgpisa.it
+        visible: true
+      - title: Upcoming events on GDG Community
+        icon: material-symbols:calendar-today
+        url: https://gdg.community.dev/gdg-pisa
+        visible: true
