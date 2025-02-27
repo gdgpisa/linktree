@@ -39,7 +39,7 @@ sections:
         url: https://devfest.gdgpisa.it/
         visible: true
       - title: DevFest Tickets
-        icon: material-symbols:confirmation_number
+        icon: material-symbols:confirmation-number
         url: https://www.eventbrite.it/e/gdg-devfest-pisa-2025-tickets-1205952308819
         visible: true
       - title: IWD Website
