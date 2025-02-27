@@ -38,6 +38,10 @@ sections:
         icon: material-symbols:festival-rounded
         url: https://devfest.gdgpisa.it/
         visible: true
+      - title: DevFest Tickets
+        icon: material-symbols:confirmation_number
+        url: https://www.eventbrite.it/e/gdg-devfest-pisa-2025-tickets-1205952308819
+        visible: true
       - title: IWD Website
         icon: material-symbols:festival-rounded
         url: https://devfest.gdgpisa.it/iwd/
