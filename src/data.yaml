@@ -46,10 +46,14 @@ sections:
         icon: material-symbols:festival-rounded
         url: https://devfest.gdgpisa.it/iwd/
         visible: true
-      - title: Call for Speakers
+    # - title: Call for Speakers
+    #   icon: material-symbols:volume-up-rounded
+    #   url: https://sessionize.com/dfp25/?e=a1a46b
+    #   visible: false
+      - title: Call for Helpers
         icon: material-symbols:volume-up-rounded
-        url: https://sessionize.com/dfp25/?e=a1a46b
-        visible: false
+        url: https://docs.google.com/forms/d/1y8G12HFY7EVc8LsF-1S24z5Wqeqiare4qaPgXwSwTDU/preview
+        visible: true
       - title: Partnership Proposal
         icon: material-symbols:handshake-rounded
         url: https://docs.google.com/document/d/1JM9FV4-M9Qf6stJguMMlRU70RhOqIdQapd9G7FKP38A/edit?usp=sharing
