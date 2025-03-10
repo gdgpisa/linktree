@@ -70,7 +70,7 @@ sections:
     links:
       - title: GDG Pisa, Modulo prenotazione aule
         icon: material-symbols:checkbook
-        url: https://forms.gle/R1DaTQEBje3Qnr5T9
+        url: https://forms.gle/k3xgyhut6FJSk3hi9
         visible: true
       - title: Proponi il tuo talk, noi pensiamo al resto
         icon: material-symbols:contract-edit
