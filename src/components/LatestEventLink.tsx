@@ -10,7 +10,7 @@ type GDGComunityEvent = {
 
 async function getLatestEvent(): Promise<GDGComunityEvent> {
     const res = await fetch(
-        `https://gdg.community.dev/api/event_slim/for_chapter/854/?page_size=4&status=Completed&include_cohosted_events=true&visible_on_parent_chapter_only=true&order=-start_date&fields=title,start_date,event_type_title,cropped_picture_url,cropped_banner_url,url,cohost_registration_url,description,description_short&page=1`,
+        `https://gdg.community.dev/api/event_slim/for_chapter/854/?page_size=4&include_cohosted_events=true&visible_on_parent_chapter_only=true&order=-start_date&fields=title,start_date,event_type_title,cropped_picture_url,cropped_banner_url,url,cohost_registration_url,description,description_short&page=1`,
         {
             mode: 'cors',
         },
