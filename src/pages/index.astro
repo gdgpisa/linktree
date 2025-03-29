@@ -24,7 +24,6 @@ import DateUtils, { isDateTimeInRange, formatItalianDateTime } from '@/component
                 <img src="/gdg-pisa-logo.png" alt="gdg pisa logo" />
                 GDG Pisa<span class="desktop-only"> &bull; Links</span>
             </h1>
-            <h2>Welcome to DevFest 2025!</h2>
             <div class="social">
                 {data.social.filter(item => item.visible).map(({ title, icon, url }) => (
                     <a href={url} target="_blank" rel="noopener noreferrer" title={title}>
@@ -33,6 +32,7 @@ import DateUtils, { isDateTimeInRange, formatItalianDateTime } from '@/component
                 ))}
             </div>
         </div>
+        <h2>Welcome to DevFest 2025!</h2>
         <h2> Need more help? Ask the <span style="color: #C6BFFF">Organizers</span> or <span style="color: #FEE7A5">Staff</span>.</h2>
         {
             data.sections.map(section => {
