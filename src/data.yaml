@@ -34,59 +34,66 @@ social:
 sections: 
   - title: #DevFest Pisa 2025
     links:
-      - title: DevFest Website
-        icon: material-symbols:festival-rounded
-        url: https://devfest.gdgpisa.it/
-        visible: true
-      - title: Schedule
+      - title: See our schedule
         icon: material-symbols:schedule
         url: https://devfest.gdgpisa.it/schedule
         visible: true
-      - title: DevFest Tickets
-        icon: material-symbols:confirmation-number
-        url: https://www.eventbrite.it/e/gdg-devfest-pisa-2025-tickets-1205952308819
+      - title: Rate a speaker!
+        icon: material-symbols:star
+        url: 
         visible: true
-      - title: IWD Website
-        icon: material-symbols:festival-rounded
-        url: https://devfest.gdgpisa.it/iwd/
+      - title: Bingo rules
+        icon: material-symbols:select-check-box-rounded
+        url: https://devfest.gdgpisa.it/news/?item=bingo
         visible: true
-    # - title: Call for Speakers
-    #   icon: material-symbols:volume-up-rounded
-    #   url: https://sessionize.com/dfp25/?e=a1a46b
-    #   visible: false
-      - title: Call for Helpers
-        icon: material-symbols:volume-up-rounded
-        url: https://docs.google.com/forms/d/1y8G12HFY7EVc8LsF-1S24z5Wqeqiare4qaPgXwSwTDU/preview
-        visible: false
-      - title: Partnership Proposal
-        icon: material-symbols:handshake-rounded
-        url: https://docs.google.com/document/d/1JM9FV4-M9Qf6stJguMMlRU70RhOqIdQapd9G7FKP38A/edit?usp=sharing
-        visible: false
+      - title: Leave your feedback
+        icon: material-symbols:feedback-rounded
+        url: 
+        visible: true
       - title: Code of Conduct
         icon: material-symbols:gavel
         url: https://devfest.gdgpisa.it/code-of-conduct/
         visible: true
-        dataInizio: 2025-02-22T19:22:00
-        dataFine: 2025-02-22T19:33:10
+        # dataInizio: 2025-02-22T19:22:00
+        # dataFine: 2025-02-22T19:33:10
 
-
-  - title: Submit your talk
+  - title: GDG Pisa & WTM Pisa
     links:
-      - title: GDG Pisa, Modulo prenotazione aule
-        icon: material-symbols:checkbook
-        url: https://forms.gle/k3xgyhut6FJSk3hi9
-        visible: true
-      - title: Proponi il tuo talk, noi pensiamo al resto
-        icon: material-symbols:contract-edit
-        url: https://docs.google.com/forms/d/e/1FAIpQLSfRDOs90s1iQHPBoceC1r55ohs1Ivsr9f5LaunGZnQzjXUNsQ/viewform
-        visible: true
-  - title: Stay Tuned
-    links:
-      - title: Website of GDG Pisa
-        icon: material-symbols:globe
+      - title: GDG Pisa
+        icon: material-symbols:group
         url: https://gdgpisa.it
         visible: true
-      - title: Upcoming events on GDG Community
-        icon: material-symbols:calendar-today
+      - title: Follow us for our future events
+        icon: material-symbols:event-upcoming-rounded
         url: https://gdg.community.dev/gdg-pisa
         visible: true
+      - title: Join our Telegram group
+        icon: material-symbols:chat
+        url: https://gdgpisa.it/telegram
+        visible: true
+      - title: Want to speak at a GDG Pisa event?
+        icon: material-symbols:mic
+        url: https://gdgpisa.it/speaking
+        visible: true
+        
+  # - title: Submit your talk
+  #   links:
+  #     - title: GDG Pisa, Modulo prenotazione aule
+  #       icon: material-symbols:checkbook
+  #       url: https://forms.gle/k3xgyhut6FJSk3hi9
+  #       visible: true
+  #     - title: Proponi il tuo talk, noi pensiamo al resto
+  #       icon: material-symbols:contract-edit
+  #       url: https://docs.google.com/forms/d/e/1FAIpQLSfRDOs90s1iQHPBoceC1r55ohs1Ivsr9f5LaunGZnQzjXUNsQ/viewform
+  #       visible: true
+  
+  # - title: Stay Tuned
+  #   links:
+  #     - title: Website of GDG Pisa
+  #       icon: material-symbols:globe
+  #       url: https://gdgpisa.it
+  #       visible: true
+  #     - title: Upcoming events on GDG Community
+  #       icon: material-symbols:calendar-today
+  #       url: https://gdg.community.dev/gdg-pisa
+  #       visible: true
