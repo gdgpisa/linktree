@@ -33,7 +33,7 @@ import DateUtils, { isDateTimeInRange, formatItalianDateTime } from '@/component
             </div>
         </div>
         <h2>Welcome to DevFest 2025!</h2>
-        <h2> Need more help? Ask the <span style="color: #C6BFFF">Organizers</span> or <span style="color: #FEE7A5">Staff</span>.</h2>
+        <h2> Need more help? Ask the <span style="color: #C6BFFF">Organizers</span> or <span style="color: #fea8a5">Staff</span>.</h2>
         {
             data.sections.map(section => {
                 const visibleLinks = section.links.filter(link => {
@@ -70,9 +70,9 @@ import DateUtils, { isDateTimeInRange, formatItalianDateTime } from '@/component
         }
 
 
-        <DateUtils client:load />
+        <!-- <DateUtils client:load />
         <h2> Next Event: </h2>
-        <LatestEventLink client:load />
+        <LatestEventLink client:load /> -->
 
     </body>
 </html>
