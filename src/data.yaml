@@ -40,15 +40,19 @@ sections:
         visible: true
       - title: Rate a speaker!
         icon: material-symbols:star
-        url: 
+        url: https://forms.gle/Y7tSh3wtMdjqhWvF8
         visible: true
       - title: Bingo rules
         icon: material-symbols:select-check-box-rounded
         url: https://devfest.gdgpisa.it/news/?item=bingo
         visible: true
-      - title: Leave your feedback
+      - title: Leave your feedback [ENG]
         icon: material-symbols:feedback-rounded
-        url: 
+        url: https://forms.gle/tdC2owm4DErotHo86
+        visible: true
+      - title: Leave your feedback [ITA]
+        icon: material-symbols:feedback-rounded
+        url: https://forms.gle/6n4GDTBjSZA1E2e26
         visible: true
       - title: Code of Conduct
         icon: material-symbols:gavel
