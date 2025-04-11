@@ -46,14 +46,14 @@ sections:
         icon: material-symbols:select-check-box-rounded
         url: https://devfest.gdgpisa.it/news/?item=bingo
         visible: true
-      - title: Leave your feedback [ENG]
+      - title: Leave your feedback
         icon: material-symbols:feedback-rounded
-        url: https://forms.gle/tdC2owm4DErotHo86
+        url: https://forms.gle/qwGsnWq7qpyjpp4E9
         visible: true
       - title: Leave your feedback [ITA]
         icon: material-symbols:feedback-rounded
         url: https://forms.gle/6n4GDTBjSZA1E2e26
-        visible: true
+        visible: false
       - title: Code of Conduct
         icon: material-symbols:gavel
         url: https://devfest.gdgpisa.it/code-of-conduct/
