@@ -30,42 +30,7 @@ social:
     url: 'https://www.youtube.com/@gdgpisa4445'
     visible: true
 
-#dataInizio e dataFine vanno messe con ora inglese
 sections:
-  - title: DevFest Pisa 2025
-    links:
-      - title: DevFest Website
-        icon: material-symbols:festival-rounded
-        url: https://devfest.gdgpisa.it/
-        visible: true
-      - title: DevFest Tickets
-        icon: material-symbols:confirmation-number
-        url: https://www.eventbrite.it/e/gdg-devfest-pisa-2025-tickets-1205952308819
-        visible: true
-      - title: IWD Website
-        icon: material-symbols:festival-rounded
-        url: https://devfest.gdgpisa.it/iwd/
-        visible: true
-    # - title: Call for Speakers
-    #   icon: material-symbols:volume-up-rounded
-    #   url: https://sessionize.com/dfp25/?e=a1a46b
-    #   visible: false
-      - title: Call for Helpers
-        icon: material-symbols:volume-up-rounded
-        url: https://docs.google.com/forms/d/1y8G12HFY7EVc8LsF-1S24z5Wqeqiare4qaPgXwSwTDU/preview
-        visible: true
-      - title: Partnership Proposal
-        icon: material-symbols:handshake-rounded
-        url: https://docs.google.com/document/d/1JM9FV4-M9Qf6stJguMMlRU70RhOqIdQapd9G7FKP38A/edit?usp=sharing
-        visible: true
-      - title: Code of Conductaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-        icon: material-symbols:gavel
-        url: https://devfest.gdgpisa.it/code-of-conduct/
-        visible: false
-        dataInizio: 2025-02-22T19:22:00
-        dataFine: 2025-02-22T19:33:10
-
-
   - title: Submit your talk
     links:
       - title: GDG Pisa, Modulo prenotazione aule
