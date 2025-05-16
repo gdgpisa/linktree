@@ -60,6 +60,7 @@ export const LatestEventLink = ({}) => {
         <>
             {latestEvent && (
                 <div class="links">
+                    <h2 class="subtitle">Next: {latestEvent.title}</h2>
                     <a class="card" href={latestEvent.url} target="_blank">
                         <div class="picture">
                             <img src={latestEvent.cropped_picture_url} alt="GDG Community Event" />
