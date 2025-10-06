@@ -1,0 +1,33 @@
+name: Scheduled Netlify Rebuild
+
+on:
+  schedule:
+    - cron: "30 6,9,11,15,18,21 * * *"
+  # Allow manual runs from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      NETLIFY_BUILD_HOOK_URL: ${{ secrets.NETLIFY_BUILD_HOOK_URL }}
+    steps:
+      - name: Sanity check secret exists
+        run: |
+          if [ -z "$NETLIFY_BUILD_HOOK_URL" ]; then
+            echo "❌ NETLIFY_BUILD_HOOK_URL secret is missing."
+            exit 1
+          fi
+
+      - name: Trigger Netlify build hook
+        run: |
+          # POST to the build hook. -f fails on HTTP errors, -s quiets output, -S shows errors.
+          curl -fsS -X POST "$NETLIFY_BUILD_HOOK_URL"
+          echo "✅ Build hook triggered."
+
+    # Prevent overlapping runs if a previous one is still going
+    concurrency:
+      group: netlify-scheduled-rebuild
+      cancel-in-progress: false
+

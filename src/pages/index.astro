@@ -4,6 +4,7 @@ import data from '@/data.yaml';
 import { LatestEventLink } from '@/components/LatestEventLink';
 import '@/style.css';
 import DateUtils, { isDateTimeInRange, formatItalianDateTime } from '@/components/DateUtils';
+import LatestEventStatic from '@/components/LatestEventStatic.astro';
 ---
 
 <!doctype html>
@@ -34,8 +35,7 @@ import DateUtils, { isDateTimeInRange, formatItalianDateTime } from '@/component
             </div>
         </div>
 
-        <DateUtils client:load />
-        <LatestEventLink client:load />
+        <LatestEventStatic />
 
         {
             data.sections.map(section => {

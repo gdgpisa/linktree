@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon/components'
+
+// Fetch latest upcoming event
+const upcomingRes = await fetch(
+    'https://gdg.community.dev/api/event_slim/for_chapter/854/?page_size=1&include_cohosted_events=true&visible_on_parent_chapter_only=true&order=-start_date&fields=title,start_date,event_type_title,cropped_picture_url,cropped_banner_url,url,cohost_registration_url,description,description_short&page=1',
+    { mode: 'cors' },
+)
+const upcomingData = await upcomingRes.json()
+const latestEvent = upcomingData.results[0]
+
+// Fetch latest completed event
+const completedRes = await fetch(
+    'https://gdg.community.dev/api/event_slim/for_chapter/854/?page_size=1&status=Completed&include_cohosted_events=true&visible_on_parent_chapter_only=true&order=-start_date&fields=title,start_date,event_type_title,cropped_picture_url,cropped_banner_url,url,cohost_registration_url,description,description_short&page=1',
+    { mode: 'cors' },
+)
+const completedData = await completedRes.json()
+const latestCompletedEvent = completedData.results[0]
+
+const FEEDBACK_FORM_URL_PREFIX =
+    'https://docs.google.com/forms/d/e/1FAIpQLSdPCraC4NxEaxKEcqUIE7llG3xbBZtHiQnlKPh3hVzHe1be7Q/viewform'
+---
+
+{
+    latestEvent && (
+        <div class="links">
+            <h2 class="subtitle">Next: {latestEvent.title}</h2>
+            <a class="card" href={latestEvent.url} target="_blank">
+                <div class="picture">
+                    <img src={latestEvent.cropped_picture_url} alt="GDG Community Event" />
+                </div>
+            </a>
+            <a
+                href={
+                    FEEDBACK_FORM_URL_PREFIX +
+                    `?usp=pp_url&entry.1235423955=${
+                        latestCompletedEvent ? encodeURIComponent(latestCompletedEvent.title) : ''
+                    }`
+                }
+                class="large"
+            >
+                <Icon name="material-symbols:rss-feed" />
+                <div class="fill center">Feedback from last event</div>
+            </a>
+        </div>
+    )
+}
