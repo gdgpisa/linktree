@@ -51,3 +51,13 @@ sections:
         icon: material-symbols:calendar-today
         url: https://gdg.community.dev/gdg-pisa
         visible: true
+  - title: DevFest Pisa 2026
+    links:
+      - title: Call for Speakers
+        icon: material-symbols:volume-up-rounded
+        url: https://sessionize.com/gdg-devfest-pisa-2026/
+        visible: true
+      - title: Partnership Proposal
+        icon: material-symbols:handshake-rounded
+        url: https://docs.google.com/document/d/1TbuETYCizEvvVMRBR9kTFsLT-X2X5NS7GlV43IZO0xM/edit?usp=sharing
+        visible: true
