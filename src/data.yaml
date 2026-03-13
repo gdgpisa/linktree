@@ -55,7 +55,7 @@ sections:
     links:
       - title: Call for Helpers
         icon: mdi:help-outline
-        url: https://docs.google.com/forms/d/e/1FAIpQLScqzwXyHlsdBK9-1CmvC4k0TNXccrCJmMJJWcCQ3KW1RU_-PA/viewform
+        url: https://forms.gle/sE1of58ypRpYrw1C7
         visible: true
       - title: Partnership Proposal
         icon: material-symbols:handshake-rounded
