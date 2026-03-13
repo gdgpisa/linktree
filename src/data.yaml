@@ -53,9 +53,9 @@ sections:
         visible: true
   - title: DevFest Pisa 2026
     links:
-      - title: Call for Speakers
-        icon: material-symbols:volume-up-rounded
-        url: https://sessionize.com/gdg-devfest-pisa-2026/
+      - title: Call for Helpers
+        icon: mdi:help-outline
+        url: https://docs.google.com/forms/d/e/1FAIpQLScqzwXyHlsdBK9-1CmvC4k0TNXccrCJmMJJWcCQ3KW1RU_-PA/viewform
         visible: true
       - title: Partnership Proposal
         icon: material-symbols:handshake-rounded
