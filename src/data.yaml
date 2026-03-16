@@ -31,6 +31,24 @@ social:
     visible: true
 
 sections:
+  - title: DevFest Pisa 2026
+    links:
+      - title: Call for Helpers
+        icon: mdi:help-outline
+        url: https://forms.gle/sE1of58ypRpYrw1C7
+        visible: true
+      - title: Get ticket
+        icon: material-symbols:rectangle-add
+        url: https://www.eventbrite.it/e/devfest-pisa-2026-tickets-1985159725177
+        visible: true
+      - title: Website
+        icon: material-symbols:rocket
+        url: https://devfest.gdgpisa.it/
+        visible: true
+      - title: Partnership Proposal
+        icon: material-symbols:handshake-rounded
+        url: https://docs.google.com/document/d/1TbuETYCizEvvVMRBR9kTFsLT-X2X5NS7GlV43IZO0xM/edit?usp=sharing
+        visible: true
   - title: Submit your talk
     links:
       - title: GDG Pisa, Modulo prenotazione aule
@@ -50,22 +68,4 @@ sections:
       - title: Upcoming events on GDG Community
         icon: material-symbols:calendar-today
         url: https://gdg.community.dev/gdg-pisa
-        visible: true
-  - title: DevFest Pisa 2026
-    links:
-      - title: Call for Helpers
-        icon: mdi:help-outline
-        url: https://forms.gle/sE1of58ypRpYrw1C7
-        visible: true
-      - title: Get ticket
-        icon: material-symbols:rectangle-add
-        url: https://www.eventbrite.it/e/devfest-pisa-2026-tickets-1985159725177
-        visible: true
-      - title: Website
-        icon: material-symbols:rocket
-        url: https://devfest.gdgpisa.it/
-        visible: true
-      - title: Partnership Proposal
-        icon: material-symbols:handshake-rounded
-        url: https://docs.google.com/document/d/1TbuETYCizEvvVMRBR9kTFsLT-X2X5NS7GlV43IZO0xM/edit?usp=sharing
         visible: true
