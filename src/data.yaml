@@ -19,7 +19,7 @@ social:
     visible: true
   - title: 'LinkedIn'
     icon: 'mdi:linkedin'
-    url: 'https://linkedin.com/company/gdg-pisa'
+    url: 'https://linkedin.com/company/gdgpisa'
     visible: true
   - title: 'Facebook'
     icon: 'mdi:facebook'
