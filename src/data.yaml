@@ -32,7 +32,7 @@ social:
 
 #dataInizio e dataFine vanno messe con ora inglese
 sections: 
-  - title: #DevFest Pisa 2025
+  - title: #DevFest Pisa 2026
     links:
       - title: See our schedule
         icon: material-symbols:schedule
@@ -48,37 +48,37 @@ sections:
         visible: true
       - title: Leave your feedback
         icon: material-symbols:feedback-rounded
-        url: https://forms.gle/qwGsnWq7qpyjpp4E9
+        url: https://forms.gle/dCXboKvZJB3eHodJ7
         visible: true
-      - title: Leave your feedback [ITA]
-        icon: material-symbols:feedback-rounded
-        url: https://forms.gle/6n4GDTBjSZA1E2e26
-        visible: false
       - title: Code of Conduct
         icon: material-symbols:gavel
         url: https://devfest.gdgpisa.it/code-of-conduct/
         visible: true
-        # dataInizio: 2025-02-22T19:22:00
-        # dataFine: 2025-02-22T19:33:10
+      - title: Video presentation
+        icon: 'mdi:youtube'
+        url: https://www.youtube.com/watch?v=OK3b3pCMZWg
+        visible: true
+        # dataInizio: 2026-02-22T19:22:00
+        # dataFine: 2026-02-22T19:33:10
 
   - title: GDG Pisa & WTM Pisa
     links:
       - title: GDG Pisa
         icon: material-symbols:group
         url: https://gdgpisa.it
-        visible: true
+        visible: false
       - title: Follow us for our future events
         icon: material-symbols:event-upcoming-rounded
         url: https://gdg.community.dev/gdg-pisa
-        visible: true
+        visible: false
       - title: Join our Telegram group
         icon: material-symbols:chat
         url: https://gdgpisa.it/telegram
-        visible: true
+        visible: false
       - title: Want to speak at a GDG Pisa event?
         icon: material-symbols:mic
         url: https://gdgpisa.it/speaking
-        visible: true
+        visible: false
         
   # - title: Submit your talk
   #   links:
