@@ -19,6 +19,7 @@ import DateUtils, { isDateTimeInRange, formatItalianDateTime } from '@/component
         <link rel="icon" href="/gdg-pisa-logo.png" />
     </head>
     <body>
+        <div id="binary-art" aria-hidden="true"></div>
         <div class="subtitle">
             <h1>
                 <img src="/gdg-pisa-logo.png" alt="gdg pisa logo" />
@@ -33,7 +34,7 @@ import DateUtils, { isDateTimeInRange, formatItalianDateTime } from '@/component
             </div>
         </div>
         <h2>Welcome to DevFest 2026!</h2>
-        <h2> Need more help? Ask the <span style="color: #958eccff">Organizers</span> or <span style="color: #64b361ff">Staff</span>.</h2>
+        <h2> Need more help? Ask the <span style="color: #6d28d9; -webkit-text-stroke: 1.5px #fff; paint-order: stroke fill">Organizers</span> or <span style="color: #15803d; -webkit-text-stroke: 1.5px #fff; paint-order: stroke fill">Staff</span>.</h2>
         {
             data.sections.map(section => {
                 const visibleLinks = section.links.filter(link => {
@@ -74,5 +75,22 @@ import DateUtils, { isDateTimeInRange, formatItalianDateTime } from '@/component
         <h2> Next Event: </h2>
         <LatestEventLink client:load /> -->
 
+        <script>
+            import { BinaryGrid } from '@/lib/binary-art'
+
+            const container = document.getElementById('binary-art')!
+            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+            new BinaryGrid(container, {
+                cellSize: 32,
+                fontSize: 16,
+                fontFamily: "'Roboto Mono', 'Courier New', monospace",
+                updateInterval: 10,
+                samplingRate: 0.005,
+                colors: isDark
+                    ? { bg: '#222222', base: '#2a3560', highlight: '#3d5090' }
+                    : { bg: 'transparent', base: '#7cbdff', highlight: '#579ee5' },
+            })
+        </script>
     </body>
 </html>

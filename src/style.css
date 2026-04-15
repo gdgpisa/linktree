@@ -11,6 +11,13 @@ body {
     min-height: 100%;
 }
 
+#binary-art {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
 img {
     display: inline-block;
 }
@@ -61,9 +68,10 @@ h1 {
 h2 {
     font-size: 24px;
     font-weight: 700;
+    text-align: center;
 
-    @media screen and (width <= 768px) {
-        text-align: center;
+    @media screen and (min-width: 769px) {
+        text-align: left;
     }
 }
 
@@ -75,43 +83,49 @@ h3 {
 /* Components */
 
 a {
+    --size: 2.5rem;
+
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 
-    border-radius: 2rem;
-
-    color: #333;
+    color: #fff;
     text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.25;
 
-    background-color: #fff;
-    border: 2px solid #ddd;
+    background-color: #497aff;
+    border: 2px solid #333;
+    border-radius: calc(var(--size) / 2);
 
-    @media screen and (prefers-color-scheme: dark) {
-        background: #333;
-        color: #d8d8d8;
-        border-color: #555;
-    }
+    padding: 0.35rem calc(var(--size) / 2);
+    min-height: var(--size);
 
-    --padding-size: 1rem;
-    --padding-size-half: calc(var(--padding-size) * 0.7);
+    cursor: pointer;
+    position: relative;
+    transition:
+        transform 0.1s ease,
+        box-shadow 0.1s ease,
+        background-color 0.1s ease;
 
     &.large {
-        --padding-size: 1.5rem;
-        font-size: 17px;
+        --size: 3.5rem;
+        font-size: 1.1rem;
+
+        @media screen and (min-width: 480px) {
+            font-size: 1.25rem;
+        }
     }
 
-    gap: var(--padding-size-half);
-    padding: var(--padding-size-half) var(--padding-size);
-
-    &:has(> img:first-child),
-    &:has(> svg:first-child),
-    &:has(> .icon:first-child) {
-        padding-left: var(--padding-size-half);
-    }
-
-    &:has(> img:first-child:last-child),
-    &:has(> svg:first-child:last-child) {
-        padding: var(--padding-size-half);
+    /* Icon-only buttons (social links) — round */
+    &:has(> svg:first-child:last-child),
+    &:has(> img:first-child:last-child) {
+        --size: 2.75rem;
+        padding: 0;
+        width: var(--size);
+        height: var(--size);
+        flex-shrink: 0;
         border-radius: 50%;
     }
 
@@ -119,36 +133,11 @@ a {
     svg {
         width: 22px;
         height: 22px;
-    }
-
-    &.card {
-        place-self: center;
-
-        display: grid;
-        grid-auto-flow: row;
-        place-items: center;
-        gap: 1rem;
-
-        padding: 1rem;
-        border-radius: 1rem;
-
-        max-width: 45ch;
-
-        .picture {
-            width: 100%;
-            height: 100%;
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 1rem;
-            }
-        }
+        flex-shrink: 0;
     }
 
     .fill {
-        flex-grow: 1;
+        flex: 1;
     }
 
     .center {
@@ -156,10 +145,33 @@ a {
     }
 
     &:hover {
-        background-color: #f8f8f8;
+        background-color: oklch(from #497aff calc(l - 0.075) c h);
+        transform: translateY(-6px);
+        box-shadow: 0 6px 0 0 #333;
 
-        @media screen and (prefers-color-scheme: dark) {
-            background-color: #444;
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            bottom: -9px;
+        }
+    }
+
+    &:active {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 0 0 #333;
+    }
+
+    @media screen and (prefers-color-scheme: dark) {
+        border-color: #555;
+
+        &:hover {
+            box-shadow: 0 6px 0 0 #555;
+        }
+
+        &:active {
+            box-shadow: 0 2px 0 0 #555;
         }
     }
 }
@@ -203,16 +215,24 @@ a {
 
 /* Layout */
 
+html {
+    background: linear-gradient(to right, #a5d2ff9f 70%, #fff);
+    min-height: 100vh;
+
+    @media screen and (prefers-color-scheme: dark) {
+        background: #222;
+    }
+}
+
 body {
     font-family: 'Google Sans', sans-serif;
     font-size: 16px;
     line-height: 1.5;
 
-    background-color: #fafbff;
+    background-color: transparent;
     color: #444;
 
     @media screen and (prefers-color-scheme: dark) {
-        background-color: #222;
         color: #ccc;
     }
 
@@ -240,14 +260,16 @@ img[alt='gdg pisa logo'] {
     display: contents;
 }
 
-@media screen and (width <= 768px) {
-    .desktop-only {
-        display: none;
+.desktop-only {
+    display: none;
+
+    @media screen and (min-width: 769px) {
+        display: initial;
     }
 }
 
-@media screen and (width > 768px) {
-    .mobile-only {
+.mobile-only {
+    @media screen and (min-width: 769px) {
         display: none;
     }
 }
