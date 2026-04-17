@@ -31,7 +31,7 @@ social:
     visible: true
 
 #dataInizio e dataFine vanno messe con ora inglese
-sections: 
+sections:
   - title: #DevFest Pisa 2026
     links:
       - title: See our schedule
@@ -49,6 +49,10 @@ sections:
       - title: Leave your feedback
         icon: material-symbols:feedback-rounded
         url: https://forms.gle/dCXboKvZJB3eHodJ7
+        visible: true
+      - title: Share your DevFest photos with us
+        icon: 'mdi:google-photos'
+        url: https://photos.app.goo.gl/XgQMa3aSUaPQt1hH6
         visible: true
       - title: Code of Conduct
         icon: material-symbols:gavel
@@ -79,7 +83,7 @@ sections:
         icon: material-symbols:mic
         url: https://gdgpisa.it/speaking
         visible: false
-        
+
   # - title: Submit your talk
   #   links:
   #     - title: GDG Pisa, Modulo prenotazione aule
@@ -90,7 +94,7 @@ sections:
   #       icon: material-symbols:contract-edit
   #       url: https://docs.google.com/forms/d/e/1FAIpQLSfRDOs90s1iQHPBoceC1r55ohs1Ivsr9f5LaunGZnQzjXUNsQ/viewform
   #       visible: true
-  
+
   # - title: Stay Tuned
   #   links:
   #     - title: Website of GDG Pisa
