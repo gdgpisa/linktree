@@ -33,23 +33,19 @@ social:
 sections:
   - title: DevFest Pisa 2026
     links:
-      - title: Call for Helpers
-        icon: mdi:help-outline
-        url: https://forms.gle/sE1of58ypRpYrw1C7
-        visible: true
-      - title: Get ticket
-        icon: material-symbols:rectangle-add
-        url: https://www.eventbrite.it/e/devfest-pisa-2026-tickets-1985159725177
-        visible: true
       - title: Website
         icon: material-symbols:rocket
         url: https://devfest.gdgpisa.it/
         visible: true
-      - title: Partnership Proposal
-        icon: material-symbols:handshake-rounded
-        url: https://docs.google.com/document/d/1TbuETYCizEvvVMRBR9kTFsLT-X2X5NS7GlV43IZO0xM/edit?usp=sharing
+      - title: DevFest Feedback Form
+        icon: material-symbols:feedback-rounded
+        url: https://forms.gle/dCXboKvZJB3eHodJ7
         visible: true
-  - title: Submit your talk
+      - title: Share your DevFest photos with us
+        icon: 'mdi:google-photos'
+        url: https://photos.app.goo.gl/XgQMa3aSUaPQt1hH6
+        visible: true
+  - title: Support us
     links:
       - title: GDG Pisa, Modulo prenotazione aule
         icon: material-symbols:checkbook

@@ -1,10 +1,9 @@
 ---
-import { Icon } from 'astro-icon/components';
-import data from '@/data.yaml';
-import { LatestEventLink } from '@/components/LatestEventLink';
-import '@/style.css';
-import DateUtils, { isDateTimeInRange, formatItalianDateTime } from '@/components/DateUtils';
-import LatestEventStatic from '@/components/LatestEventStatic.astro';
+import { isDateTimeInRange } from '@/components/DateUtils'
+import LatestEventStatic from '@/components/LatestEventStatic.astro'
+import data from '@/data.yaml'
+import '@/style.css'
+import { Icon } from 'astro-icon/components'
 ---
 
 <!doctype html>
@@ -20,18 +19,22 @@ import LatestEventStatic from '@/components/LatestEventStatic.astro';
         <link rel="icon" href="/gdg-pisa-logo.png" />
     </head>
     <body>
-        <div class="subtitle">
+        <div class="header">
             <h1>
                 <img src="/gdg-pisa-logo.png" alt="gdg pisa logo" />
                 GDG Pisa<span class="desktop-only"> &bull; Links</span>
             </h1>
             <h2>GDG Pisa: Tech Community</h2>
             <div class="social">
-                {data.social.filter(item => item.visible).map(({ title, icon, url }) => (
-                    <a href={url} target="_blank" rel="noopener noreferrer" title={title}>
-                        <Icon name={icon} />
-                    </a>
-                ))}
+                {
+                    data.social
+                        .filter(item => item.visible)
+                        .map(({ title, icon, url }) => (
+                            <a href={url} target="_blank" rel="noopener noreferrer" title={title}>
+                                <Icon name={icon} />
+                            </a>
+                        ))
+                }
             </div>
         </div>
 
@@ -40,8 +43,8 @@ import LatestEventStatic from '@/components/LatestEventStatic.astro';
         {
             data.sections.map(section => {
                 const visibleLinks = section.links.filter(link => {
-                    const isVisible = link.visible && isDateTimeInRange(link.dataInizio, link.dataFine);
-                    
+                    const isVisible = link.visible && isDateTimeInRange(link.dataInizio, link.dataFine)
+
                     // console.log('Link:', {
                     //     title: link.title,
                     //     visible: isVisible,
@@ -51,8 +54,8 @@ import LatestEventStatic from '@/components/LatestEventStatic.astro';
                     //     url: link.url,
                     // });
 
-                    return isVisible;
-                });
+                    return isVisible
+                })
 
                 return (
                     visibleLinks.length > 0 && (
@@ -68,7 +71,7 @@ import LatestEventStatic from '@/components/LatestEventStatic.astro';
                             </div>
                         </>
                     )
-                );
+                )
             })
         }
     </body>

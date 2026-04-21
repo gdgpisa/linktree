@@ -135,7 +135,7 @@ a {
         max-width: 45ch;
 
         .picture {
-        /*    
+            /*    
             width: 100%;
             height: 100%;
         */
@@ -166,12 +166,16 @@ a {
     }
 }
 
-.subtitle {
+.header {
     display: grid;
     grid-auto-flow: row;
     place-items: center;
     align-content: start;
     gap: 1rem;
+}
+
+.subtitle {
+    text-align: center;
 }
 
 .social {
