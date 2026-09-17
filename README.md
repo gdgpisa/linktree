@@ -1,24 +1,26 @@
-# GDG Pisa / Links
+<img src="./public/gdg-pisa-logo.svg" alt="GDG Pisa logo" width="72" />
+
+# GDG Pisa &bull; Links
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/85cb3619-ead6-49e1-ba01-1faa0720b787/deploy-status)](https://app.netlify.com/sites/lambent-bunny-988790/deploys)
+[![Astro](https://img.shields.io/badge/Astro-6-BC52EE?logo=astro&logoColor=white)](https://astro.build)
+[![Preact](https://img.shields.io/badge/Preact-10-673AB8?logo=preact&logoColor=white)](https://preactjs.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 
-Welcome to the GDG Pisa Links project! This project is a simple web application
-that provides links to various GDG Pisa resources and social media platforms. It
-is built using TypeScript, Astro and Preact. Here are some of the features of the
-application:
+Benvenuto nel progetto GDG Pisa Links! Questo progetto è una semplice web
+application che fornisce link alle varie risorse e ai social media di GDG Pisa.
+È costruito con TypeScript, Astro e Preact.
 
-- Responsive design with support for dark mode
+## ✨ Funzionalità
 
-- Links to GDG Pisa's social media platforms
+- 🌓 Design responsive con supporto alla dark mode
+- 🔗 Link ai social media di GDG Pisa
+- 📅 Recupero e visualizzazione dinamica dell'ultimo evento GDG Pisa
+- 📝 Per aggiornare i link mostrati basta modificare il file `./src/data.yaml`
 
-- Dynamic fetching and display of the latest GDG Pisa event
+## 📦 Installazione
 
-- To update shown links just change the `./src/data.yaml` file
-
-## Installation
-
-To get started with the project, clone the repository and install the
-dependencies (with `npm` or `bun`):
+Per iniziare, clona il repository e installa le dipendenze (con `npm` o `bun`):
 
 ```sh
 $ git clone https://github.com/aziis98/gdg-pisa-linktree
@@ -26,30 +28,30 @@ $ cd gdg-pisa-linktree
 $ npm install
 ```
 
-## Development
+## 🛠️ Sviluppo
 
-### Usage
+### ▶️ Utilizzo
 
-To run the project locally, use the following command:
+Per avviare il progetto in locale, usa il seguente comando:
 
 ```sh
 $ npm run dev
 ```
 
-This will start a development server and you can view the application in your
-browser at `http://localhost:4321`.
+Questo avvierà un server di sviluppo e potrai vedere l'applicazione nel
+browser su `http://localhost:4321`.
 
-### Building the Project
+### 🏗️ Build del progetto
 
-To build the project for production, use the following command:
+Per compilare il progetto per la produzione, usa il seguente comando:
 
 ```sh
 npm run build
 ```
 
-This will create a `dist/` directory with the production build of the
-application.
+Questo creerà una cartella `dist/` con la build di produzione
+dell'applicazione.
 
-## Notes
+## 📓 Note
 
 - https://stackoverflow.com/questions/27844608/a-way-to-pass-url-parameters-into-survey
