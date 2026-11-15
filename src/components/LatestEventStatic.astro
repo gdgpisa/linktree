@@ -1,47 +1,89 @@
 ---
+import { formatItalianDateTime } from '@/components/DateUtils'
 import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
 
-// Fetch latest upcoming event
-const upcomingRes = await fetch(
-    'https://gdg.community.dev/api/event_slim/for_chapter/854/?page_size=1&include_cohosted_events=true&visible_on_parent_chapter_only=true&order=-start_date&fields=title,start_date,event_type_title,cropped_picture_url,cropped_banner_url,url,cohost_registration_url,description,description_short&page=1',
-    { mode: 'cors' },
-)
-const upcomingData = await upcomingRes.json()
-const latestEvent = upcomingData.results[0]
+// Everything here runs at build time. The page stays up to date without commits because
+// .github/workflows/netlify-rebuild.yml triggers a Netlify rebuild several times a day.
 
-// Fetch latest completed event
-const completedRes = await fetch(
-    'https://gdg.community.dev/api/event_slim/for_chapter/854/?page_size=1&status=Completed&include_cohosted_events=true&visible_on_parent_chapter_only=true&order=-start_date&fields=title,start_date,event_type_title,cropped_picture_url,cropped_banner_url,url,cohost_registration_url,description,description_short&page=1',
-    { mode: 'cors' },
-)
-const completedData = await completedRes.json()
-const latestCompletedEvent = completedData.results[0]
+// How many events to show under "Coming soon", after the main "Next event" card.
+const MAX_COMING_SOON_EVENTS = 3
 
-const FEEDBACK_FORM_URL_PREFIX =
-    'https://docs.google.com/forms/d/e/1FAIpQLSdPCraC4NxEaxKEcqUIE7llG3xbBZtHiQnlKPh3hVzHe1be7Q/viewform'
+// "status=Live" returns only published events that are not over yet, and "order=start_date"
+// puts the closest one first.
+const UPCOMING_EVENTS_URL =
+    'https://gdg.community.dev/api/event_slim/for_chapter/854/' +
+    '?status=Live&order=start_date&include_cohosted_events=true&visible_on_parent_chapter_only=true' +
+    '&fields=title,start_date,end_date,event_type_title,cropped_picture_url,url' +
+    `&page_size=${1 + MAX_COMING_SOON_EVENTS}&page=1`
+
+type GdgEvent = {
+    title: string
+    start_date: string
+    end_date: string
+    event_type_title?: string
+    cropped_picture_url: string
+    url: string
+}
+
+const response = await fetch(UPCOMING_EVENTS_URL)
+const data: { results: GdgEvent[] } = await response.json()
+
+// Safety net in case the API still reports as "Live" an event that has already ended.
+const now = new Date()
+const upcomingEvents = data.results.filter(event => new Date(event.end_date) > now)
+
+// The closest event gets the big card, the following ones a compact link each.
+// When the closest one ends, the next rebuild promotes the following one automatically.
+const [nextEvent, ...comingSoonEvents] = upcomingEvents
 ---
 
 {
-    latestEvent && (
-        <div class="links">
-            <h2 class="subtitle">Latest Event "{latestEvent.title}"</h2>
-            <a class="card" href={latestEvent.url} target="_blank">
-                <div class="picture">
-                    <img src={latestEvent.cropped_picture_url} alt="GDG Community Event" />
+    nextEvent && (
+        <section class="panel panel--blue">
+            <h2 class="panel__title">Next event</h2>
+            <a class="event-card" href={nextEvent.url} target="_blank" rel="noopener noreferrer">
+                {/*
+                    The picture is downloaded and resized at build time and served from our own
+                    domain in a few sizes, so phones do not download the full 1000px original.
+                    The API always serves a square picture (1000x1000).
+                */}
+                <Image
+                    class="event-card__picture"
+                    src={nextEvent.cropped_picture_url}
+                    alt=""
+                    width={1000}
+                    height={1000}
+                    widths={[400, 600, 800, 1000]}
+                    sizes="(max-width: 600px) calc(100vw - 70px), 546px"
+                    loading="eager"
+                    fetchpriority="high"
+                />
+                <div class="event-card__body">
+                    {nextEvent.event_type_title && (
+                        <span class="event-card__eyebrow">{nextEvent.event_type_title}</span>
+                    )}
+                    <h3 class="event-card__title">{nextEvent.title}</h3>
+                    <p class="event-card__date">{formatItalianDateTime(nextEvent.start_date)}</p>
                 </div>
             </a>
-            <a
-                href={
-                    FEEDBACK_FORM_URL_PREFIX +
-                    `?usp=pp_url&entry.1235423955=${
-                        latestCompletedEvent ? encodeURIComponent(latestCompletedEvent.title) : ''
-                    }`
-                }
-                class="large"
-            >
-                <Icon name="material-symbols:rss-feed" />
-                <div class="fill center">Feedback from last event</div>
-            </a>
-        </div>
+
+            {comingSoonEvents.length > 0 && (
+                <>
+                    <h2 class="panel__title panel__title--secondary">Coming soon</h2>
+                    {comingSoonEvents.map(event => (
+                        <a class="link-pill" href={event.url} target="_blank" rel="noopener noreferrer">
+                            <span class="link-pill__icon">
+                                <Icon name="material-symbols:calendar-today" />
+                            </span>
+                            <span class="link-pill__label">
+                                {event.title}
+                                <span class="link-pill__detail">{formatItalianDateTime(event.start_date)}</span>
+                            </span>
+                        </a>
+                    ))}
+                </>
+            )}
+        </section>
     )
 }

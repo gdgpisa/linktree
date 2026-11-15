@@ -1,259 +1,567 @@
+/*
+ * Visual language aligned with https://gdgpisa.it:
+ * dark hero with blurred Google-colour blobs, tinted rounded panels,
+ * and "sticker" components (thick border + solid offset shadow).
+ * Design tokens below mirror the ones used on the main site.
+ */
+
+:root {
+    color-scheme: light dark;
+
+    --color-primary: #2196f3;
+    --color-primary-dark: #1976d2;
+    --color-google-blue: #4285f4;
+    --color-google-red: #ea4335;
+    --color-google-yellow: #fbbc05;
+    --color-google-green: #34a853;
+
+    --color-bg: #fff;
+    --color-surface: #f7f8fa;
+    --color-text: #1a1a1a;
+    --color-text-muted: #5f6368;
+    --color-link: #1976d2;
+
+    --font-brand: 'Product Sans', 'Google Sans Text', Roboto, system-ui, sans-serif;
+
+    --radius-card: 20px;
+    --radius-panel: 24px;
+    --radius-pill: 999px;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 16px;
+    --space-4: 24px;
+    --space-5: 32px;
+    --space-6: 48px;
+
+    --content-max-width: 600px;
+}
+
+/*
+ * Dark theme. The token block is intentionally duplicated: plain CSS cannot share
+ * declarations between a media query and an attribute selector.
+ *  - first block: OS preference, unless the user forced light via the toggle
+ *  - second block: user forced dark via the toggle (data-theme set by index.astro)
+ * Keep the two blocks identical.
+ */
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+        --color-bg: #121212;
+        --color-surface: #1e1e1e;
+        --color-text: #f1f1f1;
+        --color-text-muted: #a8adb3;
+        --color-link: #64b5f6;
+    }
+}
+
+:root[data-theme='dark'] {
+    color-scheme: dark;
+
+    --color-bg: #121212;
+    --color-surface: #1e1e1e;
+    --color-text: #f1f1f1;
+    --color-text-muted: #a8adb3;
+    --color-link: #64b5f6;
+}
+
+:root[data-theme='light'] {
+    color-scheme: light;
+}
+
+/* Fonts: Product Sans, self-hosted in public/fonts (same files used by gdgpisa.it) */
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('/fonts/product-sans/ProductSans-Regular.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('/fonts/product-sans/ProductSans-Bold.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* Base */
+
 *,
 *::before,
 *::after {
-    font-family: inherit;
-    margin: 0;
     box-sizing: border-box;
 }
 
 html,
 body {
-    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: var(--font-brand);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-text);
+    background: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
 }
 
 img {
-    display: inline-block;
+    display: block;
+    max-width: 100%;
 }
-
-/* Fonts & Typography */
-
-@font-face {
-    font-family: 'Google Sans';
-    src: url('https://fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrwEIJllpyw.ttf')
-        format('truetype');
-    font-style: normal;
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: 'Google Sans';
-    src: url('https://fonts.gstatic.com/s/googlesans/v62/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrzjJ5llpyw.ttf')
-        format('truetype');
-    font-style: normal;
-    font-weight: 700;
-}
-
-.icon {
-    font-family: 'Material Symbols Outlined Variable';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px; /* Preferred icon size */
-    display: inline-block;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    direction: ltr;
-
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 300,
-        'GRAD' 0,
-        'opsz' 24;
-}
-
-h1 {
-    font-size: 30px;
-    font-weight: 700;
-}
-
-h2 {
-    font-size: 24px;
-    font-weight: 700;
-
-    @media screen and (width <= 768px) {
-        text-align: center;
-    }
-}
-
-h3 {
-    font-size: 18px;
-    font-weight: 700;
-}
-
-/* Components */
 
 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+/*
+ * Hero. Deliberately different from gdgpisa.it (dark navy with colour blobs) so the
+ * links page is recognisable at a glance: a flat Google colour with "sticker" elements.
+ * The colour is picked at random on every visit among the four Google colours by the
+ * inline script in index.astro, which sets `data-hero` on <html>. Blue is the fallback
+ * when JavaScript is off.
+ * Text is dark on all four colours: white would not be readable on yellow and fails
+ * AA contrast for small text on the other three.
+ * Kept compact because most visitors arrive from mobile.
+ */
+
+:root {
+    --color-hero: var(--color-google-blue);
+    /* Near-black: #1a1a1a would fall just below AA contrast (4.43:1) on Google red. */
+    --color-hero-ink: #111;
+}
+
+:root[data-hero='red'] {
+    --color-hero: var(--color-google-red);
+}
+
+:root[data-hero='yellow'] {
+    --color-hero: var(--color-google-yellow);
+}
+
+:root[data-hero='green'] {
+    --color-hero: var(--color-google-green);
+}
+
+.hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: var(--space-5) var(--space-3);
+    color: var(--color-hero-ink);
+    text-align: center;
+    background: var(--color-hero);
+    border-bottom: 3px solid var(--color-hero-ink);
+}
+
+/* Theme toggle (top-left of the hero). Shows the sun in light theme, the moon in dark theme. */
+
+.theme-toggle {
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+    z-index: 2;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    color: var(--color-hero-ink);
+    font: inherit;
+    cursor: pointer;
+    background: #fff;
+    border: 3px solid var(--color-hero-ink);
+    border-radius: var(--radius-pill);
+}
 
-    border-radius: 2rem;
+.theme-toggle:hover {
+    background: #f1f1f1;
+}
 
-    color: #333;
-    text-decoration: none;
+.theme-toggle:focus-visible,
+.hero a:focus-visible {
+    outline: 3px solid var(--color-hero-ink);
+    outline-offset: 3px;
+}
 
-    background-color: #fff;
-    border: 2px solid #ddd;
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+}
 
-    @media screen and (prefers-color-scheme: dark) {
-        background: #333;
-        color: #d8d8d8;
-        border-color: #555;
+.theme-toggle__icon {
+    display: flex;
+}
+
+.theme-toggle__icon--moon {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .theme-toggle__icon--sun {
+        display: none;
     }
 
-    --padding-size: 1rem;
-    --padding-size-half: calc(var(--padding-size) * 0.7);
-
-    &.large {
-        --padding-size: 1.5rem;
-        font-size: 17px;
-    }
-
-    gap: var(--padding-size-half);
-    padding: var(--padding-size-half) var(--padding-size);
-
-    &:has(> img:first-child),
-    &:has(> svg:first-child),
-    &:has(> .icon:first-child) {
-        padding-left: var(--padding-size-half);
-    }
-
-    &:has(> img:first-child:last-child),
-    &:has(> svg:first-child:last-child) {
-        padding: var(--padding-size-half);
-        border-radius: 50%;
-    }
-
-    img,
-    svg {
-        width: 22px;
-        height: 22px;
-    }
-
-    &.card {
-        place-self: center;
-
-        display: grid;
-        grid-auto-flow: row;
-        place-items: center;
-        gap: 1rem;
-
-        padding: 1rem;
-        border-radius: 1rem;
-
-        max-width: 45ch;
-
-        .picture {
-            /*    
-            width: 100%;
-            height: 100%;
-        */
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 1rem;
-            }
-        }
-    }
-
-    .fill {
-        flex-grow: 1;
-    }
-
-    .center {
-        text-align: center;
-    }
-
-    &:hover {
-        background-color: #f8f8f8;
-
-        @media screen and (prefers-color-scheme: dark) {
-            background-color: #444;
-        }
+    :root:not([data-theme='light']) .theme-toggle__icon--moon {
+        display: flex;
     }
 }
 
-.header {
-    display: grid;
-    grid-auto-flow: row;
-    place-items: center;
-    align-content: start;
-    gap: 1rem;
+:root[data-theme='dark'] .theme-toggle__icon--sun {
+    display: none;
 }
 
-.subtitle {
-    text-align: center;
+:root[data-theme='dark'] .theme-toggle__icon--moon {
+    display: flex;
+}
+
+/* "Fork me on GitHub" corner (top-right of the hero) */
+
+.github-corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.github-corner svg {
+    display: block;
+    width: 72px;
+    height: 72px;
+}
+
+.github-corner__bg {
+    fill: var(--color-hero-ink);
+}
+
+.github-corner__octo {
+    fill: var(--color-hero);
+}
+
+.github-corner__arm {
+    transform-origin: 130px 106px;
+}
+
+.github-corner:hover .github-corner__arm {
+    animation: octocat-wave 0.56s ease-in-out;
+}
+
+@keyframes octocat-wave {
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+    20%,
+    60% {
+        transform: rotate(-25deg);
+    }
+    40%,
+    80% {
+        transform: rotate(10deg);
+    }
+}
+
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Round white badge, like the hero logo on gdgpisa.it. The logo file is landscape, hence `contain`. */
+.hero__logo {
+    width: 88px;
+    height: 88px;
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
+    object-fit: contain;
+    background: #fff;
+    border: 3px solid var(--color-hero-ink);
+    border-radius: 50%;
+    box-shadow: 4px 4px 0 0 var(--color-hero-ink);
+}
+
+.hero__overline {
+    margin-bottom: var(--space-1);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    margin-bottom: var(--space-1);
+    font-size: clamp(2.4rem, 7vw, 3.4rem);
+    line-height: 1.2;
+}
+
+.hero__tagline {
+    font-size: 1.1rem;
 }
 
 .social {
     display: flex;
-    flex-direction: row;
-    gap: 1rem;
-
     flex-wrap: wrap;
     justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
 }
 
-.links {
+.social__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    color: var(--color-hero-ink);
+    background: #fff;
+    border: 3px solid var(--color-hero-ink);
+    border-radius: var(--radius-pill);
+    box-shadow: 3px 3px 0 0 var(--color-hero-ink);
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+}
+
+.social__item:hover {
+    box-shadow: 5px 5px 0 0 var(--color-hero-ink);
+    transform: translate(-2px, -2px);
+}
+
+.social__item svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Mobile adjustments */
+
+@media (width <= 480px) {
+    .github-corner svg {
+        width: 56px;
+        height: 56px;
+    }
+
+    .theme-toggle {
+        top: var(--space-2);
+        left: var(--space-2);
+    }
+
+    .hero__logo {
+        width: 76px;
+        height: 76px;
+        padding: 12px;
+    }
+
+    .social {
+        gap: 10px;
+    }
+
+    .social__item {
+        width: 44px;
+        height: 44px;
+    }
+
+    .container {
+        padding-top: var(--space-4);
+    }
+
+    .panel {
+        padding: var(--space-3);
+    }
+}
+
+/* Page content */
+
+.container {
     display: grid;
-    grid-auto-flow: row;
+    gap: var(--space-4);
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: var(--space-5) var(--space-3) var(--space-6);
+}
 
-    gap: 1rem;
+/* Panels: one per link section, tinted with a Google colour */
 
+.panel {
+    --panel-color: var(--color-google-blue);
+
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-radius: var(--radius-panel);
+    background: color-mix(in srgb, var(--panel-color) 10%, var(--color-surface));
+}
+
+.panel--blue {
+    --panel-color: var(--color-google-blue);
+}
+
+.panel--red {
+    --panel-color: var(--color-google-red);
+}
+
+.panel--yellow {
+    --panel-color: var(--color-google-yellow);
+}
+
+.panel--green {
+    --panel-color: var(--color-google-green);
+}
+
+.panel__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.panel__title--secondary {
+    margin-top: var(--space-2);
+}
+
+/* Link pill ("sticker" style) */
+
+.link-pill {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-4) var(--space-2) var(--space-2);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--color-text);
+    background: var(--color-bg);
+    border: 3px solid var(--color-text);
+    border-radius: var(--radius-pill);
+    box-shadow: 4px 4px 0 0 var(--color-text);
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+}
+
+.link-pill:hover {
+    box-shadow: 6px 6px 0 0 var(--color-text);
+    transform: translate(-2px, -2px);
+}
+
+.link-pill__icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--panel-color) 25%, var(--color-bg));
+}
+
+.link-pill__icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.link-pill__label {
+    flex-grow: 1;
+    text-align: center;
+    /* Balance the icon on the left so the label is optically centred. */
+    padding-right: calc(40px - var(--space-3));
+}
+
+/* Optional second line inside a link pill (e.g. the date of a "Coming soon" event) */
+.link-pill__detail {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+/* Next event card */
+
+.event-card {
+    display: block;
+    overflow: hidden;
+    color: var(--color-text);
+    background: var(--color-bg);
+    border: 3px solid var(--color-text);
+    border-radius: var(--radius-card);
+    box-shadow: 6px 6px 0 0 var(--color-text);
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+}
+
+.event-card:hover {
+    box-shadow: 8px 8px 0 0 var(--color-text);
+    transform: translate(-2px, -2px);
+}
+
+.event-card__picture {
     width: 100%;
-    max-width: 60ch;
+    height: auto;
 }
 
-.dynamic-icon-color {
-    path {
-        fill: #444;
+.event-card__body {
+    padding: var(--space-3) var(--space-4) var(--space-4);
+    border-top: 3px solid var(--color-text);
+    background: linear-gradient(
+        165deg,
+        color-mix(in srgb, var(--color-primary) 10%, var(--color-bg)),
+        var(--color-bg) 55%
+    );
+}
 
-        @media screen and (prefers-color-scheme: dark) {
-            fill: #ccc;
-        }
+.event-card__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-2);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--color-primary-dark);
+    border-radius: var(--radius-pill);
+}
+
+.event-card__title {
+    margin-top: var(--space-2);
+    font-size: 1.35rem;
+    line-height: 1.2;
+}
+
+.event-card__date {
+    margin-top: var(--space-1);
+    color: var(--color-link);
+    font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .github-corner:hover .github-corner__arm {
+        animation: none;
     }
-}
 
-/* Layout */
-
-body {
-    font-family: 'Google Sans', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-
-    background-color: #fafbff;
-    color: #444;
-
-    @media screen and (prefers-color-scheme: dark) {
-        background-color: #222;
-        color: #ccc;
-    }
-
-    display: grid;
-    grid-auto-flow: row;
-    place-items: center;
-    align-content: start;
-    min-height: 100vh;
-
-    padding: 4rem 1rem;
-    gap: 2rem;
-}
-
-img[alt='gdg pisa logo'] {
-    width: 6rem;
-    height: 6rem;
-    margin-right: 1rem;
-
-    vertical-align: middle;
-}
-
-/* Misc */
-
-.dynamic-bit {
-    display: contents;
-}
-
-@media screen and (width <= 768px) {
-    .desktop-only {
-        display: none;
-    }
-}
-
-@media screen and (width > 768px) {
-    .mobile-only {
-        display: none;
+    .social__item,
+    .link-pill,
+    .event-card {
+        transition: none;
     }
 }
