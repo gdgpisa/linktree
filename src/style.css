@@ -109,6 +109,15 @@ body {
     color: var(--color-text);
     background: var(--color-bg);
     -webkit-font-smoothing: antialiased;
+
+    /* Column layout so the footer stays at the bottom even when the page is short. */
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+    width: 100%;
 }
 
 h1,
@@ -552,6 +561,32 @@ a:focus-visible {
     margin-top: var(--space-1);
     color: var(--color-link);
     font-weight: 700;
+}
+
+/* Footer */
+
+.site-footer {
+    color: var(--color-text-muted);
+    text-align: center;
+    background: var(--color-surface);
+}
+
+.site-footer__credits {
+    padding: var(--space-4) var(--space-3);
+}
+
+/* Bands of increasing width: blue, green, yellow, red, blue, green. */
+.site-footer__stripe {
+    height: 10px;
+    background: linear-gradient(
+        to right,
+        var(--color-google-blue) 0 5%,
+        var(--color-google-green) 5% 10%,
+        var(--color-google-yellow) 10% 20%,
+        var(--color-google-red) 20% 35%,
+        var(--color-google-blue) 35% 60%,
+        var(--color-google-green) 60% 100%
+    );
 }
 
 @media (prefers-reduced-motion: reduce) {

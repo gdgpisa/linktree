@@ -15,6 +15,9 @@ Il formato segue [Keep a Changelog](https://keepachangelog.com/it/1.1.0/).
 - Angolo "Fork me on GitHub" (in alto a destra) che punta al repository.
 - Font Product Sans ospitato nel progetto (`public/fonts/product-sans/`), gli
   stessi file usati da [gdgpisa.it](https://gdgpisa.it).
+- Footer con la scritta "Made with ❤️ by GDG Pisa · © GDG Pisa <anno>" (anno
+  calcolato in build, quindi sempre aggiornato grazie al rebuild quotidiano) e
+  una striscia con i colori Google, uguale a quello di gdgpisa.it.
 - Questo changelog.
 
 ### Modificato

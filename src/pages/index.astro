@@ -11,6 +11,10 @@ const PANEL_COLORS = ['red', 'yellow', 'green', 'blue']
 
 const GITHUB_REPO_URL = 'https://github.com/gdgpisa/linktree'
 
+// Computed at build time. The scheduled Netlify rebuild runs every day, so the year
+// shown in the footer updates on its own on the 1st of January.
+const currentYear = new Date().getFullYear()
+
 const visibleSections = data.sections
     .map(section => ({
         title: section.title,
@@ -134,6 +138,14 @@ const visibleSections = data.sections
                 ))
             }
         </main>
+
+        <footer class="site-footer">
+            <p class="site-footer__credits">
+                Made with <span role="img" aria-label="love">❤️</span> by GDG Pisa · © GDG Pisa {currentYear}
+            </p>
+            {/* Decorative Google-colour stripe; same footer as gdgpisa.it. */}
+            <div class="site-footer__stripe" aria-hidden="true"></div>
+        </footer>
 
         <script>
             // Theme toggle: flips between light and dark and remembers the choice.
