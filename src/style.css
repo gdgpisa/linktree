@@ -522,9 +522,31 @@ a:focus-visible {
     transform: translate(-2px, -2px);
 }
 
+/*
+ * The event pictures made for GDG Community already contain a black frame with a hard
+ * shadow (about 4px on the top/left and 22px on the bottom/right of the 1000px image).
+ * Inside our own rounded card that frame would be doubled and cut at the corners, so the
+ * picture is enlarged and shifted inside this frame to hide it. Values are in pixels of
+ * the source image; a picture without that frame only loses a thin strip at the edges.
+ * gdgpisa.it does the same in UpcomingEvent.astro: keep the numbers in sync.
+ */
+.event-card__picture-frame {
+    --source-size: 1000;
+    --crop-top-left: 5;
+    --crop-bottom-right: 23;
+    --visible-size: calc(var(--source-size) - var(--crop-top-left) - var(--crop-bottom-right));
+
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
 .event-card__picture {
-    width: 100%;
+    width: calc(100% * var(--source-size) / var(--visible-size));
+    max-width: none;
     height: auto;
+    /* Percentages in margins refer to the frame width, also for the top margin. */
+    margin-top: calc(-100% * var(--crop-top-left) / var(--visible-size));
+    margin-left: calc(-100% * var(--crop-top-left) / var(--visible-size));
 }
 
 .event-card__body {

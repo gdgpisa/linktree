@@ -36,6 +36,9 @@ Il formato segue [Keep a Changelog](https://keepachangelog.com/it/1.1.0/).
   programma l'intero blocco non viene mostrato.
 - L'immagine dell'evento viene scaricata e ridimensionata durante la build
   (`astro:assets`) e servita dal nostro dominio in più misure.
+- La cornice nera già presente nelle immagini degli eventi viene nascosta,
+  così non si raddoppia con il bordo della card e non viene tagliata agli
+  angoli (valori in `src/style.css`, uguali a quelli di gdgpisa.it).
 - Il CSS è incluso direttamente nell'HTML (`inlineStylesheets` in
   `astro.config.mjs`) per evitare una richiesta bloccante.
 - Aggiunta la meta description. Punteggio Lighthouse 100 in tutte le categorie
