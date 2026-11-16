@@ -13,8 +13,10 @@ declare module '@/data.yaml' {
                 icon: string
                 url: string
                 visible: boolean
-                dataInizio?: string  // Ora è opzionale e di tipo string es: 2025-02-22T19:56:00 fuso orario Londra - va messa un ora indietro
-                dataFine?: string    // Ora è opzionale e di tipo string es: 2025-02-22T19:56:00 fuso orario Londra - va messa un ora indietro
+                // Optional visibility window, e.g. 2025-02-22T19:56:00. Interpreted with London offset:
+                // enter the time one hour behind the intended Europe/Rome time.
+                dataInizio?: string
+                dataFine?: string
             }[]
         }[]
     }

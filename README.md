@@ -4,12 +4,11 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/85cb3619-ead6-49e1-ba01-1faa0720b787/deploy-status)](https://app.netlify.com/sites/lambent-bunny-988790/deploys)
 [![Astro](https://img.shields.io/badge/Astro-7-BC52EE?logo=astro&logoColor=white)](https://astro.build)
-[![Preact](https://img.shields.io/badge/Preact-10-673AB8?logo=preact&logoColor=white)](https://preactjs.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 
 Benvenuto nel progetto GDG Pisa Links! Questo progetto è una semplice web
 application che fornisce link alle varie risorse e ai social media di GDG Pisa.
-È costruito con TypeScript, Astro e Preact.
+È costruito con TypeScript e Astro.
 
 ## ✨ Funzionalità
 

@@ -50,14 +50,22 @@ Il formato segue [Keep a Changelog](https://keepachangelog.com/it/1.1.0/).
 - Sezione **DevFest Pisa 2026** (sito, form di feedback, album foto).
 - Pulsante "Feedback from last event".
 - Font Google Sans caricato da `fonts.gstatic.com`, sostituito da Product Sans.
+- Codice non più usato: componente `LatestEventLink.tsx` (vecchia versione
+  client-side del box eventi) e componente `DateUtils` (restano solo le funzioni
+  di utilità, ora in `DateUtils.ts`).
+- Preact (`@astrojs/preact`, `preact`, `@iconify/react`), non più necessario
+  senza componenti Preact, e il set di icone `@iconify-json/ic`, mai usato.
 
 ### Note
 
 - Il link al sito DevFest (`https://devfest.gdgpisa.it/`) è presente in
   `src/data.yaml` ma nascosto (`visible: false`) finché il sito 2027 non è
   pronto.
-- Nessuna modifica alle dipendenze né alla GitHub Action di rebuild
-  pianificato (`.github/workflows/netlify-rebuild.yml`).
+- `bun.lock` rigenerato: quello precedente non era allineato a `package.json`
+  (Astro 6 invece di 7). Astro 7.4 richiede Node.js >= 22.23.4: aggiunto
+  `.nvmrc` con Node 24, letto sia da nvm sia da Netlify.
+- Nessuna modifica alla GitHub Action di rebuild pianificato
+  (`.github/workflows/netlify-rebuild.yml`).
 
 ## 2026-09-17
 

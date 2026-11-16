@@ -9,16 +9,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/preact": "^6.0.5",
     "astro": "^7.3.3",
-    "astro-icon": "^1.1.5",
-    "preact": "^10.28.0"
+    "astro-icon": "^1.1.5"
   },
   "devDependencies": {
-    "@iconify-json/ic": "^1.2.4",
     "@iconify-json/material-symbols": "^1.2.50",
     "@iconify-json/mdi": "^1.2.3",
-    "@iconify/react": "^5.2.1",
     "@rollup/plugin-yaml": "^4.1.2",
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1"
