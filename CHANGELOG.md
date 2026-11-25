@@ -7,6 +7,10 @@ Il formato segue [Keep a Changelog](https://keepachangelog.com/it/1.1.0/).
 
 ### Aggiunto
 
+- Pulsante **Feedback from last event** sotto "Last event", nel pannello blu
+  degli eventi: apre il form di feedback precompilato col titolo dell'ultimo
+  evento concluso, per 7 giorni dalla sua fine. Compare anche quando non ci
+  sono eventi in programma.
 - Sezione **DevFest Pisa 2027** con i link _Call for Speakers_ (Sessionize) e
   _Call for Sponsors_ (Google Doc).
 - Pulsante per passare dal tema chiaro al tema scuro (in alto a sinistra). La
@@ -48,7 +52,6 @@ Il formato segue [Keep a Changelog](https://keepachangelog.com/it/1.1.0/).
 ### Rimosso
 
 - Sezione **DevFest Pisa 2026** (sito, form di feedback, album foto).
-- Pulsante "Feedback from last event".
 - Font Google Sans caricato da `fonts.gstatic.com`, sostituito da Product Sans.
 - Codice non più usato: componente `LatestEventLink.tsx` (vecchia versione
   client-side del box eventi) e componente `DateUtils` (restano solo le funzioni
