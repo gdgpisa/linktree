@@ -1,5 +1,5 @@
 ---
-import { formatItalianDateTime } from '@/components/DateUtils'
+import { formatItalianDateTime, toRomeCalendarDay } from '@/components/DateUtils'
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 
@@ -59,9 +59,15 @@ const lastCompletedEvent = lastCompletedData.results.find(event => {
 // pre-filled so attendees do not have to type it.
 const FEEDBACK_FORM_URL =
     'https://docs.google.com/forms/d/e/1FAIpQLSdPCraC4NxEaxKEcqUIE7llG3xbBZtHiQnlKPh3hVzHe1be7Q/viewform'
+
+// On the day of an event the feedback link already points to it, so organisers can show it
+// during the event. The API keeps an event "Live" until it ends, so it is still in upcomingEvents.
+const todayInRome = toRomeCalendarDay(now)
+const todaysEvent = upcomingEvents.find(event => toRomeCalendarDay(new Date(event.start_date)) <= todayInRome)
+
+const feedbackEvent = todaysEvent ?? lastCompletedEvent
 const feedbackUrl =
-    lastCompletedEvent &&
-    `${FEEDBACK_FORM_URL}?usp=pp_url&entry.1235423955=${encodeURIComponent(lastCompletedEvent.title)}`
+    feedbackEvent && `${FEEDBACK_FORM_URL}?usp=pp_url&entry.1235423955=${encodeURIComponent(feedbackEvent.title)}`
 ---
 
 {
@@ -121,14 +127,16 @@ const feedbackUrl =
             {feedbackUrl && (
                 <>
                     {/* Secondary heading only when it follows the "Next event" card. */}
-                    <h2 class={nextEvent ? 'panel__title panel__title--secondary' : 'panel__title'}>Last event</h2>
+                    <h2 class={nextEvent ? 'panel__title panel__title--secondary' : 'panel__title'}>
+                        {todaysEvent ? "Today's event" : 'Last event'}
+                    </h2>
                     <a class="link-pill" href={feedbackUrl} target="_blank" rel="noopener noreferrer">
                         <span class="link-pill__icon">
                             <Icon name="material-symbols:feedback-rounded" />
                         </span>
                         <span class="link-pill__label">
-                            Feedback from last event
-                            <span class="link-pill__detail">{lastCompletedEvent.title}</span>
+                            {todaysEvent ? "Feedback from today's event" : 'Feedback from last event'}
+                            <span class="link-pill__detail">{feedbackEvent.title}</span>
                         </span>
                     </a>
                 </>
